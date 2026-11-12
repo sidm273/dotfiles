@@ -1,0 +1,6 @@
+drafts
+gh_repos
+# Any file that contains the following will be ignored.
+# Used to ignore files in corporate environment
+*ZID_ECORP*
+*zid_ecorp*

@@ -1,0 +1,285 @@
+# Use the color palette
+palette = "dracula"
+
+# Define Dracula color palette
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+dimmed_fg = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
+
+# Get editor completions based on the config schema
+# Does not work in neovim by default without any configuration.
+# "$schema" = 'https://starship.rs/config-schema.json'
+
+[character]
+# success_symbol = "[λ ](bold green)"
+# success_symbol = "[❯ ](bold green)" # default
+success_symbol = "[󰅂 ](bold green)"  # nf-md-chevron_right
+# error_symbol = '[✗](bold red)'
+error_symbol = "[✖ ](bold red)"
+# error_symbol = '[ ](bold red)' # nf-fa-xmark
+# vimcmd_symbol = '[V](bold green)'
+vimcmd_symbol = "[ ](bold green)"
+
+[cmd_duration]
+min_time = 5_000  # ms
+style = "bold yellow"
+
+[directory]
+style = "bold green"
+truncation_length = 10
+read_only = " 󰌾"
+
+[git_branch]
+style = "bold pink"
+symbol = " "
+
+[git_status]
+style = "bold red"
+deleted = "󰆴 "
+untracked = " "
+stashed = "󰆼 "
+behind = "󰭽 "
+ahead = "󰭾 "
+up_to_date = "󰸞 "  # nf-md-check_bold
+conflicted = "󰞇 "  # nf-md-sword-cross
+modified = " "  # nf-oct-file_diff
+staged = '[++\($count\)](green)'
+# staged      = "󰐕 "   # nf-md-plus_circle
+
+[git_commit]
+tag_symbol = "  "
+tag_disabled = false
+
+[hostname]
+ssh_only = false
+style = "bold purple"
+ssh_symbol = " "
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold cyan"
+
+[os]
+style = "bold purple"
+disabled = true
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[shell]
+fish_indicator = "󰈺 "
+powershell_indicator = "_"
+tcsh_indicator = " "
+bash_indicator = "󱆃 "
+unknown_indicator = "?shell?"
+style = "cyan bold"
+disabled = false
+
+[shlvl]
+disabled = false
+format = "[$symbol]($style)"
+threshold = 2
+repeat = true
+symbol = "❯"
+repeat_offset = 1
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[bun]
+symbol = " "
+
+[c]
+symbol = " "
+
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[deno]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[gcloud]
+symbol = "  "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[pixi]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "
+
+# Set these env variables for displaying in prompt.
+[env_var.__STARSHIP_DISPLAY_1]
+default = ""
+symbol = '\$'
+format = "[$symbol$env_value]($style) "
+disabled = false
+style = "purple bold"
+
+[env_var.__STARSHIP_DISPLAY_2]
+default = ""
+symbol = '\$'
+format = "[$symbol$env_value]($style) "
+disabled = false
+style = "dimmed_fg bold"

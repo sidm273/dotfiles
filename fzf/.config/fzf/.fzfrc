@@ -1,0 +1,17 @@
+# FZF Example Configuration
+# Dracula colors
+--color='fg:#f8f8f2,fg+:#f8f8f2,bg:#282a36,bg+:#44475a'
+--color='hl:#50fa7b,hl+:#ff79c6,info:#ffb86c,marker:#ff79c6'
+--color='prompt:#8BE9FD,spinner:#ffb86c,pointer:#ff79c6,header:#6272a4'
+--color='gutter:#282a36,border:#6272A4,label:#f8f8f2,query:#f8f8f2'
+# Border settings
+--border="rounded"
+--border-label=" FZF"
+--border-label-pos="0"
+--preview-window="border-double"
+# Icons/Glyphs used.
+--prompt="λ "
+--marker=">"
+--pointer="◆"
+--separator="─"
+--scrollbar="│"

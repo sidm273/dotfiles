@@ -1,0 +1,124 @@
+! 1. Save this file to ~/.Xresources
+! 2. Run merge (as shown below to apply changes)
+! `xrdb-merge ~/.Xresources`
+! 3. Sometimes you might need to clear the resources before merging.
+! `xrdb -remove`
+! 4. Optionally verify applied contents using
+! `xrdb -query`
+
+!!!!!! Suckless Terminal settings !!!!!!
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.autohint: 0
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+! Or you can launch it with
+! st -f "JetBrainsMono Nerd Font Mono:style:Medium:size=18"
+! st.font: JetBrainsMono Nerd Font Mono:style:Medium:size=18
+! st.font: JetBrainsMono Nerd Font Mono:style:Medium:pixelsize=20
+! st.font: JetBrainsMono Nerd Font Mono:style:Medium:pixelsize=25
+! st.font: JetBrainsMono Nerd Font Mono:style:Medium:pixelsize=30
+! Dracula colors in st
+st.foreground: #F8F8F2
+st.background: #282A36
+st.color0:     #000000
+st.color8:     #4D4D4D
+st.color1:     #FF5555
+st.color9:     #FF6E67
+st.color2:     #50FA7B
+st.color10:    #5AF78E
+st.color3:     #F1FA8C
+st.color11:    #F4F99D
+st.color4:     #BD93F9
+st.color12:    #CAA9FA
+st.color5:     #FF79C6
+st.color13:    #FF92D0
+st.color6:     #8BE9FD
+st.color14:    #9AEDFE
+st.color7:     #BFBFBF
+st.color15:    #E6E6E6
+st.borderpx: 5
+
+!!!!!! XTERM SETTINGS !!!!!!
+! Window Title
+xterm*Title: xterm
+! Ideally following should be reported by terminal emulator
+! and not ~/.bashrc and friends.
+xterm*termName: xterm-256color
+!xterm*geometry: 256x46
+! TIP: To conveniently determine your desired terminal window size for Xterm
+! startup open xterm and resize it to desired size and run `resize` in it.
+! For more options see `man resize`
+xterm*maximized: true
+xterm*faceName: JetBrainsMono Nerd Font
+xterm*faceSize: 18
+xterm*boldMode: false
+xterm*renderFont: true
+
+! Dracula Xresources palette
+xterm*.foreground: #F8F8F2
+xterm*.background: #282A36
+xterm*.color0:     #000000
+xterm*.color8:     #4D4D4D
+xterm*.color1:     #FF5555
+xterm*.color9:     #FF6E67
+xterm*.color2:     #50FA7B
+xterm*.color10:    #5AF78E
+xterm*.color3:     #F1FA8C
+xterm*.color11:    #F4F99D
+xterm*.color4:     #BD93F9
+xterm*.color12:    #CAA9FA
+xterm*.color5:     #FF79C6
+xterm*.color13:    #FF92D0
+xterm*.color6:     #8BE9FD
+xterm*.color14:    #9AEDFE
+xterm*.color7:     #BFBFBF
+xterm*.color15:    #E6E6E6
+
+xterm*saveLines: 10000
+xterm*scrollBar: true
+xterm*scrollLines: 1
+xterm*vt100.scrollbar.width: 8
+xterm*vt100.selectToClipboard: true
+xterm*vt100.metaSendsEscape: true
+xterm*eightBitInput: false
+
+!!!!!! NEDIT SETTINGS !!!!!!
+! nedit*foreground: #F8F8F2
+! nedit*background: #282A36
+! nedit*calltipForeground: #F8F8F2
+! nedit*calltipBackground: #343746
+! ! Foreground color for inactive tabs.
+! nedit*XmLFolder.inactiveForeground: #6C664B
+! ! Color for hyperlinks in the help text
+! nedit.helpLinkColor: #8BE9FD
+!
+! !!! Make shit bigger. !!!
+! ! Default font for menus, dialogs, scroll bars, etc..
+! nedit*fontList: helvetica medium 18 points
+! ! Font used for displaying online help.
+! nedit.helpFont: helvetica medium 18 points
+! ! Bold font for online help.
+! nedit.boldHelpFont: helvetica bold 18 points
+! ! Italic font for online help.
+! nedit.italicHelpFont: helvetica italic 18 points
+! ! Fixed font for online help.
+! nedit.fixedHelpFont: courier medium 18 points
+! ! Fixed bold for online help.
+! nedit.boldFixedHelpFont: courier bold 18 points
+! ! Fixed italic font for online help.
+! nedit.italicFixedHelpFont: courier italic 18 points
+! ! Font for level-1 titles in help text.
+! nedit.h1HelpFont: helvetica bold 24 points
+! ! Font for level-2 titles in help text.
+! nedit.h2HelpFont: helvetica bold italic 22 points
+! ! Font for level-3 titles in help text.
+! nedit.h3HelpFont: courier bold 20 points
+! ! Font for hyperlinks in the help text
+! nedit.helpLinkFont: helvetica medium 18 points
+!! Source:
+!! https://edoras.sdsu.edu/doc/nedit-5.5-rp/resources.html#X_Resources
+!! https://www.doc.ic.ac.uk/lab/labman/nedit/n6.html
+!! https://www.sao.ru/hq/sts/linux/doc/nedit/faq/sect_customization.shtml#N299
+!! https://www.thecadforums.com/threads/nedit-tips-for-skill.33583/

@@ -1,0 +1,71 @@
+[global]
+# "Wrap to 80 characters"
+line_length = 80
+flavor = "standard"
+
+# Headings: ATX-style only (# Heading), not Setext (underlines)
+[MD003]
+style = "atx"
+
+# Lists: Prettier maintains consistent markers within each list
+# It doesn't enforce a global marker style across all lists
+[MD004]
+style = "consistent"
+#
+[MD007]
+indent = 2  # Number of spaces per indentation level (default: 2)
+start-indented = false  # Allow first level lists to start indented (default: false)
+start-indent = 2  # Number of spaces for first level when start_indented is true (default: 2)
+style = "text-aligned"  # Indentation style: "text-aligned" (default) or "fixed" (default: "text-aligned")
+#
+[MD013]
+line-length = 80
+reflow = true
+reflow-mode = "normalize"
+require-sentence-capital = false  # Require uppercase after periods for sentence detection (default: true)
+
+# Lists: uses lazy numbering (all 1.) for long lists
+# Use "one_or_ordered" to allow both lazy and explicit numbering
+[MD029]
+style = "one_or_ordered"
+
+[MD030]
+ul_single = 1
+ul_multi = 1
+ol_single = 1
+ol_multi = 1
+
+[MD032]
+allow-lazy-continuation = false
+
+# Code blocks: Fenced (```) preferred over indented
+[MD046]
+style = "fenced"
+
+# Emphasis: normalizes italics to underscores, bold to asterisks
+[MD049]
+style = "underscore"
+
+[MD050]
+style = "asterisk"
+# The following rules are enabled by default and match Google's guide:
+# - MD018: Space after hash in headings
+# - MD022: Blank lines around headings
+# - MD025: Single H1 per document
+# - MD033: No inline HTML (Google: "Strongly prefer Markdown")
+# - MD040: Code blocks should specify language
+# The following rules are enabled by default and align with Prettier:
+# - MD010: No hard tabs (Prettier converts to spaces)
+# - MD012: No multiple consecutive blank lines
+# - MD023: Headings must start at beginning of line
+# - MD047: Files end with single newline
+
+#############################
+# Sources
+# Google Markdown Style Guide Configuration
+# https://google.github.io/styleguide/docguide/style.html
+# Prettier-Compatible Markdown Configuration
+# https://prettier.io/docs/options
+# rumdl configuration examples.
+# https://github.com/rvben/rumdl/examples
+#############################
