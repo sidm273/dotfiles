@@ -1,0 +1,52 @@
+"################
+"Created using: Claude Code
+"TODO: HUMAN VERIFICATION PENDING :FIXME
+"################
+"
+" marimo vimrc: basic Neovim keymaps ported to marimo's vim mode.
+" Enable in marimo.toml (absolute path; marimo does not expand ~):
+"   [keymap]
+"   vimrc = "/home/<you>/.config/marimo/vimrc"
+"
+" marimo 0.25.2 vimrc parser rules (verified in its frontend bundle):
+" - Only map/nmap/vmap/imap, noremap/nnoremap/vnoremap/inoremap,
+"   unmap/nunmap/vunmap/iunmap, mapclear/nmapclear/vmapclear/imapclear.
+"   No let, set, xmap, omap, <silent> or <expr>.
+" - A comment is a whole line starting with a double quote in column 0.
+"   Keep comments on their own line. No indented lines, no spaces in lhs/rhs.
+" - No <Leader>. Your leader is Space (nvim/.config/nvim/lua/core/vimsane.lua:6-7),
+"   but every leader mapping you have is a picker, buffer or LSP action, so none
+"   is ported. To add one, write <Space> literally and first free it from its
+"   default (Space = l):
+"     unmap <Space>
+"     nnoremap <Space>d dd
+
+" Yank to the system clipboard, approximating clipboard=unnamedplus.
+" Source: nvim/.config/nvim/lua/core/vimsane.lua:43
+" The "+ register calls navigator.clipboard (codemirror-vim 6.4.0). Yanks also
+" fill the unnamed register, so yyp and ddp still work.
+" Caveats: "ay etc. now yank to "+ instead; needs a secure origin
+" (localhost or https). Deletes do not go to the clipboard.
+nnoremap y "+y
+vnoremap y "+y
+
+" Paste from the system clipboard. Off by default: each p asks the browser
+" for clipboard-read permission, and ddp/xp would paste the clipboard
+" instead of the deleted text. Uncomment to opt in.
+" Source: nvim/.config/nvim/lua/core/vimsane.lua:43
+"nnoremap p "+p
+"nnoremap P "+P
+"vnoremap p "+p
+
+" Y yanks to end of line (Neovim built-in default, not in your config).
+" Recursive nmap so it goes through the y clipboard mapping above.
+" Source: https://github.com/neovim/neovim/blob/v0.12.1/runtime/lua/vim/_core/defaults.lua#L101
+" (retrieved 2026-11-02)
+nmap Y y$
+
+" Already built into marimo or codemirror-vim, so not mapped here:
+" - Esc in normal mode clears the search highlight
+"   (nvim/.config/nvim/lua/core/keybinds.lua:6).
+" - gcc and visual gc toggle comments (mini.comment, lua/plugins/mini.lua:60-67).
+" - :w saves the notebook; gd goes to definition; zz/zt/zb scroll.
+" - Ctrl+Esc enters marimo command mode (j/k, dd, yy, p/P, o/O on cells).

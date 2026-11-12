@@ -1,0 +1,13 @@
+#!/bin/sh
+# The following script is supposed to be a faster way to delete files using rsync.
+# Benchmarks have been inconsistent across systems, but this has been faster for btrfs/zfs
+# remote mounts for large number of small files.
+set -o errexit
+set -o nounset
+
+target=$1
+tmp=$(mktemp --directory) # POSIX specific
+trap 'rmdir "$tmp"' EXIT # cleanup mechanism either on success or failure
+
+# progress2 just shows aggeregate progress.
+rsync --archive --delete --info=progress2 "$tmp/" "$target"

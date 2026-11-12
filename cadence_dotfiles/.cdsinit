@@ -1,0 +1,108 @@
+;  /\_/\  /\_/\  /\_/\
+; ( o.o )( o.o )( o.o )
+;  > ^ <  > ^ <  > ^ <
+; Use .cdsinit over .cdsenv for setting majority of environment variables.
+; Lots of references from https://github.com/ananthchellappa/SKILL
+; open the library manager by default
+; dmOpenLibBrowser()
+; sometimes the above line gives problem and you might need to comment
+; it and use the following.
+; TODO: ADD SUPPORT LINK
+hiRegTimer("ddsOpenLibManager()" 50)
+; to prevent the annoying SOS dialog that gates exit from Cadence Virtuoso session
+sosShowCheckOutsOnExit = nil
+; set the default editor
+editor="st -e nvim"
+; open Verilog-A read-only views in custom editor as well.
+hdlReadOnlyModeEditorCommand="st -e nvim"
+; load custom utils
+loadi(simplifyFilename("$XDG_CONFIG_HOME/skill/init.il"))
+;;;;;;;;;;;;;;;;;;;;
+;;      Viva      ;;
+;;;;;;;;;;;;;;;;;;;;
+; Article 11806952, 20184836 on CDNS Support Portal.
+envSetVal("viva.trace" "lineThickness" 'string "ExtraThick")
+envSetVal("viva.traceLegend" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.traceLegend" "printSaveImageFont" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.axis" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.graph" "titleFont" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.graphLabel" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.horizMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.interceptMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.pointMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.polarGrid" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.circleMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.multiDeltaMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.refPointMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.referenceLineMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.regionBookmark" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.smithGrid" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.specMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.transEdgeMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.vertMarker" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.xrangeBookmark" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+envSetVal("viva.yrangeBookmark" "font" 'string "Default,18,-1,5,55,0,0,0,0,0")
+; from Jayant on 46541767 - ViVA asking for confirmation in response to CTRL-E to del all markers
+envSetVal("viva.application" "confirmCloseWindow" 'string "false")
+
+;;;;;;;;;;;;;;;;;;;;
+;;     ADE-XL     ;;
+;;;;;;;;;;;;;;;;;;;;
+envSetVal("adexl.gui" "openSchInWin" 'boolean t)
+envSetVal("adexl.gui" "outputTabsShowDefault" 'string "\"Results\"")
+envSetVal("adexl.gui" "openDesignInNewTab" 'boolean t)
+; output view column default ordering
+envSetVal("maestro.assembler" "defaultOutputColumns" 'string "\"Test\" \"Name\" \"Type\" \"Details\" \"EvalType\" \"Plot\" \"Save\" \"Spec\" \"Weight\" \"User-Defined Columns\"")
+envSetVal("adexl.gui" "yieldViewShowDefault" 'string "\"Target\" \"Mean +- K-Sigma\" \"Mean\" \"Std Dev\" \"Min\" \"Max\" \"Cpk\" \"Errors\" \"User-Defined Columns\"")
+envSetVal("adexl.distribute" "continueICRPRunOnAbruptGUIExit" 'boolean t)
+; use terminal other than xterm
+; Article 20451858 on Cadence Support Portal.
+envSetVal("adexl.gui" "openTerminalCommand" 'string "st")
+; Save last 100 histories
+envSetVal("adexl.simulation" "saveLastNHistoryEntries" 'int 100)
+; Show line numbers in text/log views.
+envSetVal("ui.text" "showLineNumbersInSideBar" 'boolean t)
+
+;;;;;;;;;;;;;;;;;;;;
+;;   Schematic    ;;
+;;;;;;;;;;;;;;;;;;;;
+; enable net highlighting by default
+envSetVal("schematic" "schDynamicNetHilightOn" 'boolean t)
+envSetVal("schematic" "statusBannerXY" 'boolean nil)
+
+;;;;;;;;;;;;;;;;;;;;
+;;    Spectre     ;;
+;;;;;;;;;;;;;;;;;;;;
+; Set default to whatever is required by organization
+; for design reviews typically.
+
+;;;;;;;;;;;;;;;;;;;;
+;;     Layout     ;;
+;;;;;;;;;;;;;;;;;;;;
+envSetVal("layout" "drawGridOn" 'boolean nil)
+envSetVal("layout" "displayResolution" 'string "High")
+envSetVal("layout" "rulerFontBold" 'boolean t)
+envSetVal("layout" "rulerFontSize" 'cyclic "Medium")
+envSetVal("layout" "rulerDisplayType" 'cyclic "Distance")
+
+;;;;;;;;;;;;;;;;;;;;
+;;     Misc.      ;;
+;;;;;;;;;;;;;;;;;;;;
+; Use the following to get a property list of current fonts
+; hiGetFontInfo("all")
+hiSetFont("ciw" ?name "JetBrainsMono NFP Medium" ?size 20)
+hiSetFont("text" ?name "JetBrainsMono NFP Medium" ?size 14)
+hiSetFont("label" ?name "JetBrainsMono NFP Medium" ?size 12)
+envSetVal("ui" "ciwOutputWrapMode" 'cyclic "Word")
+envSetVal("ui" "ciwCmdInputLines" 'int 15)
+envSetVal("cdsLibManager.displayOptions" "showLibraryCustomIcons" 'boolean t)
+; To display nested elements in config views of extracted netlists
+envSetVal("hed.display" "maskLayoutStopLimit" 'int 50000)
+
+;;;;;;;;;;;;;;;;;;;;
+;;Corporate Bitch ;;
+;;;;;;;;;;;;;;;;;;;;
+; Load any organization specific settings.
+loadi(simplifyFilename("$ZID_ECORP/cadence_dotfiles/init.il"))
+
+; vim: set ft=skill:

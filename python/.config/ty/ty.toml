@@ -1,0 +1,15 @@
+# If you are using python.appimage with bundles dependencies/libraries.
+# the following is needed for ty to resolve the first/third party packages correctly.
+# Otherwise, venv needs to be created at every place.
+# thankfully the relative path seems to work.
+[environment]
+python-platform = "linux"
+extra-paths = [
+  "~/.local/bin/.python-appdir/opt/python3.14/lib/python3.14/site-packages/"
+]
+
+[src]
+exclude = ["**/*drafts*.py"]
+
+[terminal]
+output-format = "concise"

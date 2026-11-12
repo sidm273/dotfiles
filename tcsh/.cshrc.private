@@ -1,0 +1,9 @@
+#!/bin/csh
+# This file is a monkeypatch to make $XDG specification
+# work for csh/tcsh
+# http://harmful.cat-v.org/software/csh
+# idiom: if the file exists then source it.
+# if ( -e <filepath>) source <filepath>
+# XDG Specification.
+setenv XDG_CONFIG_HOME $HOME/.config
+if ( -e $XDG_CONFIG_HOME/tcsh/init.tcsh ) source $XDG_CONFIG_HOME/tcsh/init.tcsh

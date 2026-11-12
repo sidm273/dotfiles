@@ -1,0 +1,10 @@
+; Use cdsenv only if setting the environment variable via .cdsinit does not work!
+
+; Raises CIW on Error
+ui raiseCIWonError boolean t
+
+; Library Manager
+; https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/39993/library-manager-cdsenv-cdsinit-settings-not-taking-effect
+cdsLibManager.main showCategoriesOn boolean t
+
+; vim: set ft=skill:

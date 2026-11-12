@@ -1,0 +1,4 @@
+.cdsinit linguist-language=Lisp
+.cdsenv linguist-language=Lisp
+*.il linguist-language=Lisp
+*.ils linguist-language=Lisp

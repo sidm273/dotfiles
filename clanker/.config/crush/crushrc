@@ -1,0 +1,17 @@
+if [[ -f .env ]]; then
+    set -a
+    source .env
+    set +a
+fi
+
+provider add ollama \
+	--name "Ollama Cloud" \
+	--type openai-compat \
+	--base-url "https://ollama.com/v1" \
+	--discover-models true \
+	--api-key "$OLLAMA_API_KEY"
+
+model add ollama/glm-5.3-flash
+model large ollama/gpt-oss:120b
+
+# vim: set ft=bash: syntax=bash:

@@ -1,0 +1,97 @@
+[ai]
+allow_provider_config = true
+enabled = true
+inline_tooltip = true
+rules = "Always use type hints.\nGenerate idiomatic and reusable python code.\nTerse numpy style docstrings with basic doctest examples.\nSimple code with no edge case handling unless explicitly asked.\n"
+
+[ai.custom_providers]
+
+[ai.models]
+custom_models = []
+displayed_models = []
+
+[completion]
+activate_on_typing = true
+auto_close_pairs = true
+copilot = "github"
+signature_hint_on_typing = true
+
+[diagnostics]
+sql_linter = true
+
+[display]
+cell_output = "above"
+code_editor_font_size = 22
+code_lens = true
+dataframes = "rich"
+default_table_max_columns = 10
+default_table_page_size = 10
+default_width = "full"
+locale = "en-US"
+reference_highlighting = true
+theme = "dark"
+
+[experimental]
+external_agents = false
+
+[formatting]
+line_length = 79
+
+[keymap]
+destructive_delete = false
+preset = "vim"
+
+# [keymap.overrides]
+# "cell.aiCompletion" = "Ctrl-a"
+# "cell.complete" = "Tab"
+# "cell.signatureHelp" = "Ctrl-k"
+# "completion.moveDown" = "Ctrl-n"
+# "completion.moveUp" = "Ctrl-p"
+# "global.commandPalette" = "Ctrl-Space"
+
+[language_servers.pylsp]
+enable_flake8 = false
+enable_mypy = false
+enable_pydocstyle = false
+enable_pyflakes = false
+enable_pylint = false
+enable_ruff = true
+enabled = true
+
+[language_servers.ty]
+enabled = true
+
+[mcp]
+presets = ["marimo", "context7"]
+
+[mcp.mcpServers]
+
+[package_management]
+manager = "uv"
+
+[runtime]
+auto_instantiate = true
+auto_reload = "autorun"
+default_auto_download = []
+default_csv_encoding = "utf-8"
+default_sql_output = "auto"
+on_cell_change = "autorun"
+output_max_bytes = 8000000
+reactive_tests = false
+show_tracebacks = false
+std_stream_max_bytes = 1000000
+watcher_on_save = "lazy"
+
+[save]
+autosave = "after_delay"
+autosave_delay = 1000
+format_on_save = true
+
+[server]
+browser = "default"
+disable_file_downloads = true
+follow_symlink = true
+
+[snippets]
+custom_paths = []
+include_default_snippets = true

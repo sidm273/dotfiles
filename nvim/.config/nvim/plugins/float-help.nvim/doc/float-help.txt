@@ -1,0 +1,735 @@
+*float-help.nvim.txt*	Floating window access to Neovim's built-in help
+
+==============================================================================
+CONTENTS                                                *float-help-contents*
+
+1. Introduction......................................|float-help-introduction|
+2. Requirements......................................|float-help-requirements|
+3. Installation......................................|float-help-installation|
+4. Setup....................................................|float-help-setup|
+5. User command...........................................|float-help-command|
+6. Configuration....................................|float-help-configuration|
+7. Lua API....................................................|float-help-api|
+8. Window lifecycle.....................................|float-help-lifecycle|
+9. Suggested mappings....................................|float-help-mappings|
+10. Help navigation....................................|float-help-navigation|
+11. Error handling.........................................|float-help-errors|
+12. Autocommands.....................................|float-help-autocommands|
+13. Troubleshooting...............................|float-help-troubleshooting|
+14. Development.......................................|float-help-development|
+
+==============================================================================
+1. Introduction                                      *float-help-introduction*
+                                                         *float-help.nvim*
+                                                         *float-help*
+
+float-help.nvim displays Neovim's built-in help pages in a floating window.
+
+It keeps the familiar |:help| workflow, including help tags and command-line
+completion, while avoiding a permanent horizontal or vertical help split.
+Hidden help windows retain their buffer, cursor position, and scroll position,
+so you can temporarily return to your work and continue reading later.
+
+float-help.nvim is intentionally a small plugin:
+
+Its complete implementation is contained in: >
+
+    lua/float-help.lua
+<
+That single file registers the command, creates the floating window, loads
+Neovim's native help buffers, and manages retained state. The plugin does not
+need a framework, a compiled component, a parser, or another Neovim plugin.
+
+For most users, the complete configuration is one line: >
+
+    require("float-help").setup()
+<
+This makes the plugin easy to install, audit, customize, update, or copy into a
+personal Neovim configuration.
+
+The documentation you are reading is available with: >
+
+    :Fh float-help.nvim    " or :help float-help.nvim
+<
+FEATURES~
+
+    - Ships as a single, self-contained Lua file
+    - Opens Neovim's native help documentation in a floating window
+    - Accepts the same help tags used by |:help|
+    - Toggles the floating window without discarding its state
+    - Retains the help buffer, cursor position, and scroll position while hidden
+    - Supports navigation to another tag without closing the float
+    - Provides configurable dimensions, border, title, title position, and focus
+
+==============================================================================
+2. Requirements                                        *float-help-requirements*
+
+Neovim >= 0.9.0~
+
+nvim-treesitter~
+	Optional, but highly recommended. For help syntax highlighting, install
+	the `vimdoc` parser.
+
+==============================================================================
+3. Installation                                        *float-help-installation*
+
+Installation only adds the single Lua file to Neovim's 'runtimepath' and calls
+`setup()`. Choose your preferred plugin manager below.
+
+LAZY.NVIM~
+
+Use the following plugin specification: >
+
+    {
+        "guruela/float-help.nvim",
+        opts = {}, -- Equivalent to require("float-help").setup(opts)
+    }
+<
+PACKER.NVIM~
+
+Use the following specification: >
+
+    use({
+        "guruela/float-help.nvim",
+        config = function()
+            require("float-help").setup()
+        end,
+    })
+<
+VIM-PLUG~
+
+Add the plugin with vim-plug: >
+
+    Plug 'guruela/float-help.nvim'
+<
+Then configure the plugin in `init.lua`: >
+
+    require("float-help").setup()
+<
+NATIVE PACKAGES~
+
+Clone the repository into a directory under `pack/*/start/`: >
+
+    ~/.local/share/nvim/site/pack/plugins/start/float-help.nvim
+<
+Then add the setup call to your Neovim configuration: >
+
+    require("float-help").setup()
+<
+GENERATING HELP TAGS~
+
+Most plugin managers generate help tags automatically. If this help file is
+not found after a manual installation, run: >
+
+    :helptags /path/to/float-help.nvim/doc
+<
+After tags have been generated, the following commands resolve this file: >
+
+    :Fh float-help.nvim            " or :help float-help.nvim
+    :Fh :Fh                        " or :help :Fh
+    :Fh float-help-configuration   " or :help float-help-configuration
+    :Fh float-help.open()          " or :help float-help.open()
+<
+==============================================================================
+4. Setup                                                    *float-help-setup*
+
+Set up the plugin after it is available on 'runtimepath': >
+
+    require("float-help").setup()
+<
+`setup()` configures the plugin and registers |:Fh|. Calling `setup()` alone
+does not open a help window.
+
+Options may be passed as a table: >
+
+    require("float-help").setup({
+        width = 0.7,
+        height = 0.75,
+        border = "single",
+        title = " Neovim Help ",
+        title_pos = "left",
+        focus = true,
+    })
+<
+Calling setup again replaces the active configuration and redefines |:Fh|.
+The command is created with `force = true`, so repeated setup calls do not
+produce an "already exists" error.
+
+==============================================================================
+5. User command                                             *float-help-command*
+
+							*:Fh*
+:Fh [tag]
+	Open, navigate, hide, or restore floating help.
+
+	The optional argument is a standard Neovim help tag. Completion uses
+	Neovim's help-tag completion.
+
+OPEN A TAG~
+
+Open a specific help topic: >
+
+    :Fh lua
+    :Fh vim.lsp
+    :Fh nvim_create_autocmd()
+    :Fh diagnostic
+<
+Use command-line completion after the command: >
+
+    :Fh vim.<Tab>
+<
+OPEN THE STARTING HELP PAGE~
+
+Run |:Fh| without an argument: >
+
+    :Fh
+<
+A bare command explicitly selects the page displayed by bare |:help|. If a
+different topic was retained, bare |:Fh| changes the float back to the starting
+help page.
+
+TOGGLE THE ACTIVE TOPIC~
+
+Repeat the command for the active topic to hide the float: >
+
+    :Fh lua
+    :Fh lua
+<
+Run it once more to restore the retained session: >
+
+    :Fh lua
+<
+The help buffer, cursor position, and scroll position are retained while the
+window is hidden.
+
+CHANGE THE ACTIVE TOPIC~
+
+If the float is visible and a different tag is supplied, float-help.nvim
+navigates the existing floating window instead of hiding it: >
+
+    :Fh lua
+    :Fh lua-guide
+<
+COMMAND NAME~
+
+Neovim requires user-defined commands to begin with an uppercase letter.
+Therefore the command is named `:Fh`, not `:fh`.
+
+==============================================================================
+6. Configuration                                      *float-help-configuration*
+                                                        *float-help-options*
+
+The default configuration is equivalent to: >
+
+    require("float-help").setup({
+        width = 0.8,
+        height = 0.8,
+        border = "rounded",
+        title = "float-help.nvim",
+        title_pos = "center",
+        focus = true,
+    })
+<
+Options are passed directly into the floating-window configuration where
+applicable. Values accepted by |nvim_open_win()| can therefore be used for
+`border` and `title`.
+                                                        *float-help-width*
+width~
+	Type: number
+	Default: 0.8
+
+	Width of the floating window as a fraction of the editor width.
+
+	Example: >
+
+	    require("float-help").setup({
+	        width = 0.7,
+	    })
+<
+                                                       *float-help-height*
+height~
+	Type: number
+	Default: 0.8
+
+	Height of the floating window as a fraction of the editor height.
+
+	Example: >
+
+	    require("float-help").setup({
+	        height = 0.6,
+	    })
+<
+                                                       *float-help-border*
+border~
+	Type: string or table
+	Default: "rounded"
+
+	The border value is passed directly to |nvim_open_win()|.
+
+	Built-in styles:
+
+	    "none"  "single"  "double"  "rounded"
+	    "solid"  "shadow"  "bold"
+
+	A border table may contain eight entries or any divisor of eight. Neovim
+	repeats the entries clockwise from the top-left corner. Each entry may
+	be a character or a `{ character, highlight_group }` pair. An empty
+	string hides an individual border segment.
+
+	Example using a built-in style: >
+
+	    require("float-help").setup({
+	        border = "single",
+	    })
+<
+	Example using custom characters: >
+
+	    require("float-help").setup({
+	        border = {
+	            { "╭", "FloatBorder" },
+	            { "─", "FloatBorder" },
+	            { "╮", "FloatBorder" },
+	            { "│", "FloatBorder" },
+	            { "╯", "FloatBorder" },
+	            { "─", "FloatBorder" },
+	            { "╰", "FloatBorder" },
+	            { "│", "FloatBorder" },
+	        },
+	    })
+<
+                                                        *float-help-title*
+title~
+	Type: string or title chunks
+	Default: "float-help.nvim"
+
+	Title displayed in the floating-window border. The value is passed to
+	|nvim_open_win()|.
+
+	Example: >
+
+	    require("float-help").setup({
+	        title = " Neovim Help ",
+	    })
+<
+	Styled title chunks may also be used: >
+
+	    require("float-help").setup({
+	        title = {
+	            { "   Help ", "FloatTitle" },
+	            { " — press q to close ", "Comment" },
+	        },
+	        title_pos = "left",
+	    })
+<
+                                                    *float-help-title-pos*
+title_pos~
+	Type: string
+	Default: "center"
+
+	Position of the title in the border. Accepted values are `"left"`,
+	`"center"`, and `"right"`.
+
+	Example: >
+
+	    require("float-help").setup({
+	        title_pos = "right",
+	    })
+<
+                                                        *float-help-focus*
+focus~
+	Type: boolean
+	Default: true
+
+	Whether Neovim enters the floating window when it opens. This is passed
+	as the `enter` argument of |nvim_open_win()|.
+
+	Example: >
+
+	    require("float-help").setup({
+	        focus = false,
+	    })
+<
+TITLE AND BORDER~
+
+Floating-window titles are rendered as part of the border. Use a visible
+border if the title should be displayed.
+
+==============================================================================
+7. Lua API                                                  *float-help-api*
+
+setup({opts})                                           *float-help.setup()*
+	Configures the plugin and registers the |:Fh| command.
+
+	`opts` is optional. See |float-help-configuration|.
+
+	Example: >
+
+	    require("float-help").setup({
+	        width = 0.8,
+	        height = 0.8,
+	    })
+<
+	Calling `setup()` alone does not open a help window.
+open({tag})                                                *float-help.open()*
+	Opens the floating help window.
+
+	If `tag` names a help topic, that topic is opened: >
+
+	    require("float-help").open("vim.lsp")
+<
+	If the help state is currently hidden, calling `open()` without a tag
+	restores the retained page and view: >
+
+	    require("float-help").open()
+<
+	This differs from bare |:Fh|. Bare |:Fh| explicitly requests the
+	starting help page, while a tagless `open()` restores retained state.
+
+toggle({tag})                                            *float-help.toggle()*
+	Opens or hides the floating help window: >
+
+	    require("float-help").toggle("lua")
+<
+
+	If a different tag is supplied while the float is visible, the window
+	navigates to the new tag instead of hiding.
+
+	An empty string selects the starting help page: >
+
+	    require("float-help").toggle("")
+<
+hide()                                                    *float-help.hide()*
+	Hides the floating window while retaining its buffer and view: >
+
+	    require("float-help").hide()
+<
+	Use `hide()` when the help session should be resumable.
+
+close()                                                  *float-help.close()*
+	Closes the floating window, deletes the retained help buffer, and clears
+	the saved cursor and scroll state: >
+
+	    require("float-help").close()
+<
+	Use `close()` when the current floating help session should be discarded
+	entirely.
+
+STATE FIELDS~
+
+The module exposes the current buffer and window IDs:
+
+						*float-help.buf*
+require("float-help").buf
+	The retained help buffer ID.
+
+	This remains valid while the floating window is hidden. It becomes
+	`nil` after |float-help.close()|.
+
+						*float-help.win*
+require("float-help").win
+	The floating window ID.
+
+	This is valid while the float is visible. It is `nil` while the session
+	is hidden or after |float-help.close()|.
+
+These fields are exposed for inspection and integration. Prefer the public API
+instead of assigning to them directly.
+
+==============================================================================
+8. Window lifecycle                                   *float-help-lifecycle*
+                                                          *float-help-state*
+
+float-help.nvim distinguishes hiding a window from closing a session.
+
+VISIBLE~
+
+Both `require("float-help").win` and `require("float-help").buf` refer to valid
+Neovim objects.
+
+HIDDEN~
+
+After |float-help.hide()|:
+
+    - the floating window is closed
+    - `require("float-help").win` is `nil`
+    - the help buffer remains valid
+    - the window view is saved
+    - cursor and scroll positions can be restored
+
+RESTORED~
+
+Calling |float-help.open()| or the appropriate |:Fh| command creates a new
+floating window around the retained buffer and restores the saved view.
+
+CLOSED~
+
+After |float-help.close()|:
+
+    - the floating window is closed
+    - the retained help buffer is deleted
+    - the current tag is cleared
+    - the saved view is cleared
+    - both public state fields are `nil`
+
+STATE TRANSITIONS~
+>
+    new session
+         |
+         v
+    visible float <---------- restored
+         |                       ^
+         | hide() / :Fh again    | open() / :Fh again
+         v                       |
+    hidden retained session -----+
+         |
+         | close()
+         v
+    discarded session
+<
+NAVIGATING TO A DIFFERENT TAG~
+
+When a different tag is requested in a visible float, Neovim's native
+|:help| command runs in that help window. The floating window stays open and
+the active buffer and tag are updated.
+
+==============================================================================
+9. Suggested mappings                                   *float-help-mappings*
+
+float-help.nvim does not define key mappings automatically.
+
+TOGGLE THE STARTING PAGE~
+>
+    vim.keymap.set("n", "<leader>hh", "<cmd>Fh<cr>", {
+        desc = "Toggle floating help",
+    })
+<
+HELP FOR THE WORD UNDER THE CURSOR~
+>
+    vim.keymap.set("n", "<leader>hk", function()
+        require("float-help").toggle(vim.fn.expand("<cword>"))
+    end, {
+        desc = "Floating help for word under cursor",
+    })
+<
+HIDE AND CLOSE INSIDE HELP BUFFERS~
+
+Use a |FileType| autocommand to add buffer-local mappings: >
+
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "help",
+        callback = function(event)
+            vim.keymap.set("n", "q", function()
+                require("float-help").hide()
+            end, {
+                buffer = event.buf,
+                desc = "Hide floating help",
+            })
+
+            vim.keymap.set("n", "Q", function()
+                require("float-help").close()
+            end, {
+                buffer = event.buf,
+                desc = "Close floating help",
+            })
+        end,
+    })
+<
+==============================================================================
+10. Help navigation                                   *float-help-navigation*
+
+The floating buffer is a real Neovim help buffer, so standard help navigation
+continues to work.
+
+Common operations include:
+
+    <C-]>	Follow the help tag under the cursor.
+    <C-t>	Jump back in the tag stack.
+    ]d		Jump to the next definition where supported.
+    gd		Jump to a local help tag where supported.
+    /pattern	Search the current help buffer.
+    n / N	Move between search matches.
+
+The exact mappings available can depend on the Neovim version and the user's
+configuration.
+==============================================================================
+11. Error handling                                        *float-help-errors*
+
+UNKNOWN HELP TAGS~
+
+An invalid tag is reported on Neovim's command line.
+
+Example: >
+
+    :Fh unknown-tag
+<
+The displayed message has this form: >
+
+    float-help.nvim: E149: No help for unknown-tag
+<
+The error is handled without leaving a temporary split behind. If the floating
+window is already displaying a valid page, its content remains available.
+
+TEMPORARY-WINDOW CLEANUP~
+
+Neovim's |:help| command normally opens a split. float-help.nvim temporarily
+uses normal windows to load the native help buffer, closes those temporary
+windows, and then displays the buffer in a float.
+
+All temporary windows created during the initial lookup are closed even if the
+lookup fails.
+
+ERROR WHILE A FLOAT IS OPEN~
+
+If an invalid tag is requested while a valid floating help session is open:
+
+    - the error is displayed on the command line
+    - the floating window remains valid
+    - the previous valid content remains available
+    - the current tag is not updated
+
+==============================================================================
+12. Autocommands                                      *float-help-autocommands*
+
+The plugin itself does not define global autocommands.
+
+The help buffer uses the standard `help` filetype, so integrations may use a
+normal |FileType| event: >
+
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "help",
+        callback = function(event)
+            -- Configure any help buffer, including float-help.nvim buffers.
+        end,
+    })
+<
+When writing integrations, check the module's public state if behavior should
+apply only to the retained float-help.nvim buffer: >
+
+    if event.buf == require("float-help").buf then
+        -- This is the buffer retained by float-help.nvim.
+    end
+<
+==============================================================================
+13. Troubleshooting                                *float-help-troubleshooting*
+
+`:Fh` IS NOT AN EDITOR COMMAND~
+
+Ensure `setup()` is called after the plugin is added to Neovim's
+'runtimepath': >
+
+    require("float-help").setup()
+<
+For lazy-loaded configurations, make sure the plugin loads before invoking
+|:Fh|. With lazy.nvim, using `opts = {}` is sufficient for normal startup
+configuration.
+
+WHY IS THE COMMAND NOT NAMED `:fh`?~
+
+Neovim requires user-defined commands to start with an uppercase letter.
+Consequently, the shortest valid command name is |:Fh|.
+
+NO HELP FOR FLOAT-HELP.NVIM~
+
+Generate help tags for the plugin documentation: >
+
+    :helptags /path/to/float-help.nvim/doc
+<
+Then retry: >
+
+    :Fh float-help.nvim    " or :help float-help.nvim
+<
+Most plugin managers perform this step automatically after installing or
+updating a plugin.
+
+THE TITLE IS NOT VISIBLE~
+
+Floating-window titles are rendered as part of the border. Use a visible
+border such as: >
+
+    require("float-help").setup({
+        border = "rounded",
+    })
+<
+Also ensure your Neovim version supports floating-window titles.
+
+THE FLOAT DOES NOT RECEIVE FOCUS~
+
+The default is `focus = true`. If it has been disabled, enable it explicitly: >
+
+    require("float-help").setup({
+        focus = true,
+    })
+<
+A HELP TAG CANNOT BE FOUND~
+
+Verify the tag with Neovim's built-in command: >
+
+    :help your-tag
+<
+Plugin documentation must be present in Neovim's 'runtimepath' and its help
+tags must have been generated for third-party documentation.
+
+RESET THE HELP SESSION~
+
+Explicitly discard the retained buffer: >
+
+    require("float-help").close()
+<
+The next |:Fh| invocation starts a new session.
+
+A HORIZONTAL HELP SPLIT REMAINS~
+
+The plugin closes the temporary splits it creates. If a split remains, first
+confirm that the latest version is loaded and that no other configuration or
+autocommand is running |:help| independently.
+
+==============================================================================
+14. Development                                        *float-help-development*
+
+Clone the repository: >
+
+    git clone https://github.com/guruela/float-help.nvim.git
+    cd float-help.nvim
+<
+DIRECT RUNTIME-PATH SETUP~
+
+Add a local checkout to 'runtimepath': >
+
+    vim.opt.runtimepath:prepend("/path/to/float-help.nvim")
+    require("float-help").setup()
+<
+LAZY.NVIM LOCAL SETUP~
+
+Use lazy.nvim's `dir` field to load a local checkout instead of downloading
+the repository: >
+
+    {
+        dir = "/path/to/float-help.nvim",
+        name = "float-help.nvim",
+        opts = {},
+    }
+<
+Replace the example with an absolute path to the local clone. Restart Neovim
+or reload the plugin after making changes.
+
+MANUAL CHECKS~
+
+Exercise the primary behavior: >
+
+    :Fh
+    :Fh lua
+    :Fh vim.lsp
+    :Fh unknown-tag
+<
+Verify the following:
+
+    1. Bare |:Fh| opens the starting help page.
+    2. A valid tag appears in a float without a remaining split.
+    3. Repeating the active tag hides and restores the float.
+    4. Cursor and scroll positions survive a hide and restore cycle.
+    5. A different tag navigates the visible float.
+    6. An unknown tag displays a command-line error.
+    7. |float-help.close()| discards retained state.
+
+==============================================================================
+vim:tw=78:ts=8:noet:ft=help:norl:

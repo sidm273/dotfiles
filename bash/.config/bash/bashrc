@@ -1,0 +1,38 @@
+#!/bin/bash
+# This bashrc is a basic bitch bashrc and I haven't used it in a long while.
+# This needs work, but also, I hope I don't have to use bash as much interactively.
+# Dracula theme for TTY
+if [ "$TERM" = "linux" ]; then
+    printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
+    printf %b '\e[37m' '\e[8]' # set default foreground to color 7 'dracula-fg'
+    printf %b '\e]P0282a36'    # redefine 'black'          as 'dracula-bg'
+    printf %b '\e]P86272a4'    # redefine 'bright-black'   as 'dracula-comment'
+    printf %b '\e]P1ff5555'    # redefine 'red'            as 'dracula-red'
+    printf %b '\e]P9ff7777'    # redefine 'bright-red'     as '#ff7777'
+    printf %b '\e]P250fa7b'    # redefine 'green'          as 'dracula-green'
+    printf %b '\e]PA70fa9b'    # redefine 'bright-green'   as '#70fa9b'
+    printf %b '\e]P3f1fa8c'    # redefine 'brown'          as 'dracula-yellow'
+    printf %b '\e]PBffb86c'    # redefine 'bright-brown'   as 'dracula-orange'
+    printf %b '\e]P4bd93f9'    # redefine 'blue'           as 'dracula-purple'
+    printf %b '\e]PCcfa9ff'    # redefine 'bright-blue'    as '#cfa9ff'
+    printf %b '\e]P5ff79c6'    # redefine 'magenta'        as 'dracula-pink'
+    printf %b '\e]PDff88e8'    # redefine 'bright-magenta' as '#ff88e8'
+    printf %b '\e]P68be9fd'    # redefine 'cyan'           as 'dracula-cyan'
+    printf %b '\e]PE97e2ff'    # redefine 'bright-cyan'    as '#97e2ff'
+    printf %b '\e]P7f8f8f2'    # redefine 'white'          as 'dracula-fg'
+    printf %b '\e]PFffffff'    # redefine 'bright-white'   as '#ffffff'
+    clear
+fi
+# aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias x='exit'
+# prepend user's local bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
+# test if e(x)ecutable exists at the given path.
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+# test if starship is found in $PATH and only then initialize it.
+command -v starship > /dev/null 2>&1 && eval "$(starship init bash)"

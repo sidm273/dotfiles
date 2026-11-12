@@ -1,0 +1,13 @@
+function _set_dracula_colors --description "Sets dracula colors"
+    set --global bg "#282A36"
+    set --global selection "#44475A"
+    set --global fg "#F8F8F2"
+    set --global comment "#6272A4"
+    set --global red "#FF5555"
+    set --global orange "#FFB86C"
+    set --global yellow "#F1FA8C"
+    set --global green "#50FA7B"
+    set --global cyan "#8BE9FD"
+    set --global purple "#BD93F9"
+    set --global pink "#FF79C6"
+end
