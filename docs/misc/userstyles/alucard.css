@@ -1,0 +1,16 @@
+:root {
+  /* Alucard */
+  --background: #fffbeb;
+  --background-dark: #ceccc0;
+  --current-line: #6c664b;
+  --selection: #cfcfde;
+  --foreground: #1f1f1f;
+  --comment: #6c664b;
+  --red: #cb3a2a;
+  --orange: #a34d14;
+  --yellow: #846e15;
+  --green: #14710a;
+  --cyan: #036a96;
+  --purple: #644ac9;
+  --pink: #a3144d;
+}

@@ -1,0 +1,12 @@
+# Personal preferences to avoid cluttering $HOME
+# In this case downloads is a dumping ground.
+XDG_DESKTOP_DIR="$HOME/Desktop"
+XDG_DOWNLOAD_DIR="$HOME/downloads"
+XDG_DOCUMENTS_DIR="$HOME/downloads"
+XDG_MUSIC_DIR="$HOME/downloads"
+XDG_PICTURES_DIR="$HOME/downloads"
+XDG_VIDEOS_DIR="$HOME/downloads"
+# The following are never used and can be /var/empty
+# however, some apps might silently fail without them.
+XDG_TEMPLATES_DIR="$HOME/downloads"
+XDG_PUBLICSHARE_DIR="$HOME/downloads/public"

@@ -1,0 +1,6 @@
+# Run
+# lesskey -o ~/.lesskey ~/.config/less/.lesskeyin
+# define variable LESSKEY to point to ~/.lesskey ?? needed?
+
+#line-edit
+^?      backspace
