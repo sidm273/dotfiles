@@ -1,0 +1,3 @@
+link:
+    ln --symbolic --force ../clanker/.clanker.md CRUSH.md
+    ln --symbolic --force ../clanker/skills/ skills

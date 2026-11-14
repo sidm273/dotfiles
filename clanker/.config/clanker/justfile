@@ -1,7 +1,14 @@
+default:
+    just --choose
+
 add skill_name:
     # Add a new skill to the current directory.
     # using openclaw is the only way it saves to ./skills/
     npx skills add --agent openclaw --copy --project {{ skill_name }}
+
+update:
+    # Install from lockfile.
+    npx skills experimental_install --agent openclaw --copy --project
 
 clanker_init:
     # TODO: Symlink the agent to relevant directory.

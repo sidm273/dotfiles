@@ -3,8 +3,6 @@ set shell := ["fish", "-c"]
 default:
     just --choose
 
-fish_comp_dir := "~/dotfiles/fish/.config/fish/completions"
-
 settings:
     #!/bin/sh bash
     mkdir $HOME/Desktop/
@@ -15,14 +13,21 @@ bat:
     # Use custom theme for bat.
     bat cache --clear && bat cache --build && bat --list-themes
 
+comp_dir := "~/dotfiles/fish/.config/fish/completions"
+
 completions: && lnko_fish
-    # Generate completions for various tools.
-    bat --completion fish > {{ fish_comp_dir }}/bat.fish
-    delta --generate-completion fish > {{ fish_comp_dir }}/delta.fish
-    fd --gen-completions fish > {{ fish_comp_dir }}/fd.fish
-    gum completion fish > {{ fish_comp_dir }}/gum.fish
-    just --completions fish > {{ fish_comp_dir }}/just.fish
-    rg --generate complete-fish > {{ fish_comp_dir }}/rg.fish
+    # Generate shell completions for various tools.
+    bat --completion fish > {{ comp_dir }}/bat.fish
+    delta --generate-completion fish > {{ comp_dir }}/delta.fish
+    fd --gen-completions fish > {{ comp_dir }}/fd.fish
+    gum completion fish > {{ comp_dir }}/gum.fish
+    just --completions fish > {{ comp_dir }}/just.fish
+    rg --generate complete-fish > {{ comp_dir }}/rg.fish
+    crush completion fish > {{ comp_dir }}/crush.fish
+    uv generate-shell-completion fish > {{ comp_dir }}/uv.fish
+    ruff generate-shell-completion fish > {{ comp_dir }}/ruff.fish
+    ty generate-shell-completion fish > {{ comp_dir }}/ty.fish
+    # eza, marimo tbd.
 
 lnko_fish:
     cd ~/dotfiles && lnko unlink fish && lnko link fish && lnko status
@@ -33,8 +38,8 @@ fonts:
 
 debug_terminal:
     # Basic tests to debug terminal capabilities.
-    ./debug_terminal_glyphs
-    ./debug_terminal_truecolor
+    scripts/debug_terminal_glyphs
+    scripts/debug_terminal_truecolor
 
 man:
     # Refresh mandb

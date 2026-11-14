@@ -17,31 +17,19 @@ fish_add_path --global $HOME/.local/bin
 # add manpages to path
 set --global --export MANPATH $MANPATH $HOME/.local/share/man
 # use bat as manpager
-# Broken currently: Issue: 3724
+# Broken currently: See https://github.com/sharkdp/bat/issues/3724
 # set --global --export MANPAGER 'bat --plain --language man'
 # temporary workaround
 set --global --export MANPAGER "sh -c 'col --no-backspaces --spaces | bat --language man --plain'"
-set --global --export MANROFFOPT "-c"
+set --global --export MANROFFOPT -c
 # Personal settings.
 # Set dotfiles path.
 set --global --export ZID_DOT $HOME/dotfiles
-# Eternal Alias for the Riceless Mind
-# abbr --add sfc source ~/.config/fish/config.fish
-# abbr --add efc nvim ~/.config/fish/config.fish
 ########################################
 #    Tool related Settings to Load     #
 ########################################
 # Test if inside a corporate environment
-if not set --query ZID_ECORP
-    # At home.
-    # Initialize Homebrew related stuff first since it adds paths.
-    if test -x /home/linuxbrew/.linuxbrew/bin/brew
-        /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
-        set --global --export HOMEBREW_BUNDLE_FILE $HOME/.config/brew/personal_brew_file.rb
-    end
-    set --global --export ZID_EFILES $HOME/files
-    set --global --export ZID_OFILES $HOME/open_files
-else
+if set --query ZID_ECORP
     # Mostly in corporate environment
     # unfuck keys when using VNC/SSH
     # to debug use the command
@@ -56,9 +44,25 @@ else
     set --global --export SOS_CDS_EXIT yes
     # set language correctly since it might be fucked up.
     set --global --export LANG en_US.UTF-8
+else
+    # At home.
+    # Initialize Homebrew related stuff first since it adds paths.
+    # Absolute prefix path needed here.
+    if test -x /home/linuxbrew/.linuxbrew/bin/brew # isE(x)ecutable?
+        /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+        set --global --export HOMEBREW_BUNDLE_FILE $HOME/.config/brew/personal_brew_file.rb
+        if test -d (brew --prefix)"/share/fish/completions" # is(d)irectory?
+            set -p fish_complete_path (brew --prefix)/share/fish/completions
+        end
+        if test -d (brew --prefix)"/share/fish/vendor_completions.d" # is(d)irectory?
+            set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+        end
+    end
+    set --global --export ZID_EFILES $HOME/files
+    set --global --export ZID_OFILES $HOME/open_files
 end
 abbr --add --position anywhere -- --help '--help | bat -plhelp'
-# abbr --add --position anywhere -- -h '-h | bat -plhelp'
+# abbr --add --position anywhere -- -h '-h | bat -plhelp' # too irritating!
 set --global --export RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/.ripgreprc
 set --global --export FZF_DEFAULT_OPTS_FILE $XDG_CONFIG_HOME/fzf/.fzfrc
 set --global --export PYTHONSTARTUP $XDG_CONFIG_HOME/ptpython/pythonstartup.py
@@ -66,8 +70,6 @@ set --global --export PYTHONSTARTUP $XDG_CONFIG_HOME/ptpython/pythonstartup.py
 set --erase LS_COLORS
 # keybindings source
 # set --global fish_key_bindings fish_vi_key_bindings
-# fzf plugin disabled, trying fzf.fish
-# fzf --fish | source
 # fzf.fish specific settings.
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set fzf_preview_dir_cmd eza --all --color=always

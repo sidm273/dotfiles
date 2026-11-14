@@ -1,123 +1,123 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "add-molab-badge": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/add-molab-badge/SKILL.md",
-      "computedHash": "a77dbd15988d3a2c167139e7c9871e48ec866c3b9556631a2bd74d0fc5b6747c",
+      "computedHash": "0954bf89f3bc900ea92ed56ffe24aa88e191e4814f6fa366953858e7ace22c13",
       "installMode": "copy"
     },
     "anywidget-generator": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/anywidget/SKILL.md",
-      "computedHash": "93a512dc9870809902459881640b041afe5fe460774e9b49a212d8d799922ab5",
+      "computedHash": "b9336efade86f0fd809a2f1162e997926b4514dd80d3b82c644d6d9830141075",
       "installMode": "copy"
     },
     "ast-grep": {
       "source": "ast-grep/agent-skill",
       "sourceType": "github",
       "skillPath": "ast-grep/skills/ast-grep/SKILL.md",
-      "computedHash": "55ab409e6afd238ebab8f29d9a5230d513b6d0102e0eb9f71c554a95d1344bd6",
+      "computedHash": "66228b33a8e8327e2f3eeef8b7c9135bfd0e9ed11990529b0f1cef4d8fc7bf55",
       "installMode": "copy"
     },
     "ast-grep-outline": {
       "source": "ast-grep/agent-skill",
       "sourceType": "github",
       "skillPath": "ast-grep/skills/outline/SKILL.md",
-      "computedHash": "01260e3e36c2559e4a254446a2a991b94d656697ccb7e2f31811df85a29da099",
+      "computedHash": "240558dce6653c89adda273a3de85337fcd50e9408fb48880f85908b49ffbc32",
       "installMode": "copy"
     },
     "auto-paper-demo": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/auto-paper-demo/SKILL.md",
-      "computedHash": "edba11eee233e8e7433a8d0b38798b1da0785eb8363028c1ab28f2c95f026ec8",
+      "computedHash": "ffad9a6c2962907608acfc6da776dff9c3fcd7c4290cd08c90e5cba895204ee1",
       "installMode": "copy"
     },
     "implement-paper": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/implement-paper/SKILL.md",
-      "computedHash": "c596221b1fac6a5821fb7c62695cde55a93934f9ccde2061853e07796f3c5a6a",
+      "computedHash": "158e999930fcc2cdb8a85b2827035fc819401f7de14068c0d277fb705144b3b7",
       "installMode": "copy"
     },
     "implement-paper-auto": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/implement-paper-auto/SKILL.md",
-      "computedHash": "3f3ae9e5a28af6ea9d63dbded9b6677caebfd600d6a07fecdd845b9403b7a74e",
+      "computedHash": "6c5617a44948d5c65d4ff2097580f8676bca32104d0647eabaa0f3080d54ed64",
       "installMode": "copy"
     },
     "jupyter-to-marimo": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/jupyter-to-marimo/SKILL.md",
-      "computedHash": "b137ebc02fe012aea935d8367749eb1bfca5ec79450336ca6c01996184ea0c2c",
+      "computedHash": "73fc4a1de453b2afb343fcc514b16bd371d050ef5715406ee263a2290c8fd353",
       "installMode": "copy"
     },
     "just": {
       "source": "casey/just",
       "sourceType": "github",
       "skillPath": "skills/just/SKILL.md",
-      "computedHash": "da9eb61caf8468d813997618f923370cfe77ff4ebd6bb19b47bd4e91c19437d2",
+      "computedHash": "4cf393427fec12f1811cf8ab29bd7ba4b6a376f6c1da1f6cbd68b04f03f395b6",
       "installMode": "copy"
     },
     "marimo-batch": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/marimo-batch/SKILL.md",
-      "computedHash": "8af0436514aac6a0317733cb0897adc08026a22e82c5beb1ed92eb4bba7e5f4f",
+      "computedHash": "ed80afb5402acf387754961ea74b34760ecbb1e252082e7aa44057106bd58311",
       "installMode": "copy"
     },
     "marimo-notebook": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/marimo-notebook/SKILL.md",
-      "computedHash": "d843af038a49245369d9a91b8dda531a0d58882bc06623604b673cb144588edd",
+      "computedHash": "98100c34dde8ed5f5400bd8183d2401d41877ed43ab7a7e4faa798511ca6f44d",
       "installMode": "copy"
     },
     "marimo-pair": {
       "source": "marimo-team/marimo-pair",
       "sourceType": "github",
       "skillPath": "skills/marimo-pair/SKILL.md",
-      "computedHash": "56b1540731d05d5d85e8e59fbad67205b8a59e89bb6eb0da65341fcd558cdb1d",
+      "computedHash": "531cea9e3a3aab952c388033590412d09bc506745a6895efe7a31a6c37321188",
       "installMode": "copy"
     },
     "polars": {
       "source": "polars-inc/skills",
       "sourceType": "github",
       "skillPath": "skills/polars/SKILL.md",
-      "computedHash": "e586bbda85858f74c9976994453568defdb4151503379f5d8b64db9a96fe5661",
+      "computedHash": "66ae1aea1877a30f56049fc9f9961f1bd80ef620b59b3c2220c7a285e62e9460",
       "installMode": "copy"
     },
     "pydantic": {
       "source": "pydantic/skills",
       "sourceType": "github",
       "skillPath": "skills/pydantic/SKILL.md",
-      "computedHash": "65f68dbab0f7e60bfd26998350d674a104848daf23311067e0829758a7cf6f91",
+      "computedHash": "434540e43897b5ad8db567d7a77bd71ec0522e10134aaa23941050ca7ff7e1e7",
       "installMode": "copy"
     },
     "retro-marimo-pair": {
       "source": "marimo-team/marimo-pair",
       "sourceType": "github",
       "skillPath": "skills/retro-marimo-pair/SKILL.md",
-      "computedHash": "1f89f0999518297d5a0928528c87fc082da9645cac554b0101049042ec661d7b",
+      "computedHash": "6a0613dd3c5065a037c1f5d63221969800824d61b37fa3e0181bbb56edc3cbc6",
       "installMode": "copy"
     },
     "streamlit-to-marimo": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/streamlit-to-marimo/SKILL.md",
-      "computedHash": "a8458d1f0bb8761860793a9252d97972b348c680af2672f625f3250d8805b646",
+      "computedHash": "841c046af56cf29110519ebe1b353f37740979b09286cc78e58efa814c890f72",
       "installMode": "copy"
     },
     "wasm-compatibility": {
       "source": "marimo-team/skills",
       "sourceType": "github",
       "skillPath": "skills/wasm-compatibility/SKILL.md",
-      "computedHash": "8e195f9fa3248782c59fa834fef9a00cb1eba6cec7e3700ecfc3957d12147bbf",
+      "computedHash": "cefcb81a1124aa1acd935d1268072526b8f0bb84ec21508472573f69ca80e1f0",
       "installMode": "copy"
     }
   }
