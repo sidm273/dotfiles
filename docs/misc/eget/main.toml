@@ -1,0 +1,181 @@
+[global]
+download_only = true
+quiet = false
+show_hash = true
+system = "linux/amd64"  # testing remaining.
+
+["eza-community/eza"]
+version = "0.23.5"
+asset_filters = ["musl", "x86_64", "linux", "tar.gz"]
+verify_sha256 = "e06eebab74b73d6b7d51a796a353824b001bea82df077706382e100815d28904"
+
+["tombi-toml/tombi"]
+version = "v1.11.2"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "8bb862497e99b415310ede463ee6cf997845368d3e6d4edac4dd33b07084beb3"
+
+["rvben/rumdl"]
+version = "v0.3.4"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "2e64c7654906f0df82218fcc73cbdded2e41f37961f5be3e876e708bdf42e367"
+
+["duckdb/duckdb"]
+version = "v2.0.0"
+verify_sha256 = "c6507206baf7793c6013dbd82368469a45f20dc0e17a6f92f204602f652ed2bc"
+asset_filters = [
+  "cli",
+  "amd64",
+  "linux",
+  "gz",
+  "^musl"
+]  # this needs glibc, the musl version is linked to libmusl and won't work on glibc distros.
+
+["sharkdp/bat"]
+version = "v0.26.1"
+verify_sha256 = "0dcd8ac79732c0d5b136f11f4ee00e581440e16a44eab5b3105b611bbf2cf191"
+asset_filters = ["linux", "x86_64", "musl"]
+
+["dandavison/delta"]
+version = "0.20.1"
+asset_filters = ["musl", ".tar.gz"]
+verify_sha256 = "69dcb4043f55c29118f408c6efd30115e0a4e0a6709253343b8c8fa814ab4a31"
+
+["Wilfred/difftastic"]
+version = "0.72.0"
+asset_filters = ["musl", "tar.gz"]
+verify_sha256 = "27b9c1fe038a95682eed241265a3cacb781227730f106104b617e10067d38ff4"
+
+["sharkdp/fd"]
+version = "10.5.2"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "7e2d07fa2b8807642aaec67b7e2972a9fbe4db26fcb340a7372392db42b26694"
+
+["fish-shell/fish-shell"]
+version = "4.9.3"
+asset_filters = ["linux", "x86_64"]
+verify_sha256 = "8f643d10ad1abb0ef7072764c01ceb5cf61b2d373fda400cf60f0bad69b7e095"
+
+["junegunn/fzf"]
+version = "v0.75.0"
+asset_filters = ["linux", "amd64", ".tar.gz"]
+verify_sha256 = "0d6640f83582d991cf429754baad64b07e3a4e439a6019670f4b91da1314141c"
+
+["gitui-org/gitui"]
+version = "0.28.1"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "f6149b9ae203397158b0c89c13cfde718e7121d3d3cd2ebc597f93d6628d9b5b"
+
+["charmbracelet/gum"]
+version = "v2.0.2"
+asset_filters = ["Linux", "x86_64", "tar.gz", "^.json"]
+verify_sha256 = "d842e06d93dbed90af48cb8dd10698db6f22e331fc40346bb37bbc753109edc2"
+
+["charmbracelet/crush"]
+version = "v0.101.0"
+asset_filters = ["Linux", "x86_64", "tar.gz", "^.json"]
+verify_sha256 = "cf234948e3d7c5236d18a048a38f25a7df9ca24ba0b8fdaa525d45c5f705f99a"
+
+["luanvil/lnko"]
+version = "v0.6.0"
+asset_filters = ["linux", "x86_64"]
+verify_sha256 = "e5f95579b81ca4be9f8e1a2485da9ef860ec46c55fae158e5ee68b21a4fee9ab"
+
+["denisidoro/navi"]
+version = "2.24.0"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "f334047479241f7c8b48d091f4e814dcc798a51a74dfd04ee63cbf67e8c921ba"
+
+["neovim/neovim-releases"]
+version = "v0.12.5"
+asset_filters = [".appimage", "^puc"]
+verify_sha256 = "99da38db21d914c0ce8dfaba1cf037277849c1be7defe38fcd0d333849d69fa3"
+
+["ouch-org/ouch"]
+version = "0.8.3"
+asset_filters = ["linux", "x86_64", "musl", ".tar.gz", "^.json"]
+verify_sha256 = "eaab9b997a823f584557ac5f85205105ae577a4c4fbd23926b686469cfa19881"
+
+# ["sharkdp/pastel"]
+# version = "0.12.0"
+# asset_filters = ["musl"]
+# verify_sha256 = "96ddd6593d08fd3868f2423f18ed5c6117a5f1aab335c1fc9e8347db7f219f2a"
+
+["linebender/resvg"]
+version = "0.50.0"
+asset_filters = ["resvg", "tar.gz"]
+verify_sha256 = "5d1c9ffd43c82fb802d92cef8100055c612cd3e248d5a787c20079293a456e21"
+
+# ["phiresky/ripgrep-all"]
+# version = "0.10.10"
+# asset_filters = ["linux", "x86_64", "musl"]
+# verify_sha256 = "a969c25b182ac84aa672518313b5f741091decf7d93d03a020bcfe517b9ff4e8"
+
+["starship/starship"]
+version = "1.27.0"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "10c8eb4cb3b761d9bf59ea828444c2dab36c900b7d69a69e08814b286969df89"
+
+["bensadeh/tailspin"]
+version = "7.0.0"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "f2de9268dc24811908e63a170507d860ac90c7f6a2f1937f59e5cca78cef21a2"
+
+["charmbracelet/vhs"]
+version = "v0.12.1"
+asset_filters = ["Linux", "x86_64", "tar.gz", "^.json"]
+verify_sha256 = "eb33787a5b1cebf91fe0b18bd231e2d71d36c1ff4babd99ddac1a6ab411efd10"
+
+["sxyazi/yazi"]
+version = "26.9.1"
+asset_filters = ["linux", "x86_64", "musl", "zip"]
+verify_sha256 = "9b9c39decccf8cb0ff53a7d637d38f8a79d93bbd0099f4ea9c619ef6bb392f5d"
+
+["ajeetdsouza/zoxide"]
+version = "0.10.0"
+asset_filters = ["linux", "x86_64", "musl"]
+verify_sha256 = "2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae"
+
+["sharkdp/hyperfine"]
+version = "2.0.0"
+asset_filters = ["musl"]
+verify_sha256 = "38e59087bd65520930a13cf513d8a493b7043741e8ad62349a8a9929eb61bc5c"
+
+# ["siddhantladdha/st-flexipatch"]
+# # version = "nightly"
+# asset_filters = ["^.zsync"]
+# verify_sha256 = "57cea5bf4f91cbc5e7b8e92d64e25bb62f81b9796dec2ca505e8797aac32ada2"
+
+["bootandy/dust"]
+version = "1.2.7"
+asset_filters = ["musl"]
+verify_sha256 = "2f1a1106f1f14c0b684b2f0a5f4482c6d53e07a871df4afc11e3b91ade300b55"
+
+["ndonfris/fish-lsp"]
+version = "1.1.5"
+asset_filters = ["standalone", "assets", "tar"]
+verify_sha256 = "5404e494fed2bde5891cb6c9f2a698b4897f7c25bd3232b2e1b69741fdb67e55"
+
+["casey/just"]
+version = "v1.59.0"
+asset_filters = ["musl"]
+verify_sha256 = "409044617b6f06517c1035e55ca38c8c856ff8b650e41bc2aa1ef82d5903a23e"
+
+["BurntSushi/ripgrep"]
+version = "15.2.0"
+asset_filters = ["musl"]
+verify_sha256 = "33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
+
+["astral-sh/ruff"]
+version = "0.17.5"
+asset_filters = ["musl"]
+verify_sha256 = "dc94b7e225b8910fb6f55298ada32d00e356dbd195a5ffb647847f388cb54f84"
+
+["astral-sh/ty"]
+version = "0.0.104"
+asset_filters = ["musl"]
+verify_sha256 = "c1ea30ce33070c1e021b65682020c1a02826f2e405b0359ccc53f9d8745aab27"
+
+["astral-sh/uv"]
+version = "0.13.8"
+asset_filters = ["musl"]
+verify_sha256 = "61fb26dabc4f0cf1d050fc6c67d40e43e4fae2994af21ebc1e050b233bf2b5ed"

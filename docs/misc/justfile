@@ -1,0 +1,47 @@
+set shell := ["fish", "-c"]
+
+default:
+    just --choose
+
+fish_comp_dir := "~/dotfiles/fish/.config/fish/completions"
+
+settings:
+    #!/bin/sh bash
+    mkdir $HOME/Desktop/
+    mkdir --parents $HOME/downloads/public
+    cp settings/user-dirs.dirs ~/.config/user-dirs.dirs
+
+bat:
+    # Use custom theme for bat.
+    bat cache --clear && bat cache --build && bat --list-themes
+
+completions: && lnko_fish
+    # Generate completions for various tools.
+    bat --completion fish > {{ fish_comp_dir }}/bat.fish
+    delta --generate-completion fish > {{ fish_comp_dir }}/delta.fish
+    fd --gen-completions fish > {{ fish_comp_dir }}/fd.fish
+    gum completion fish > {{ fish_comp_dir }}/gum.fish
+    just --completions fish > {{ fish_comp_dir }}/just.fish
+    rg --generate complete-fish > {{ fish_comp_dir }}/rg.fish
+
+lnko_fish:
+    cd ~/dotfiles && lnko unlink fish && lnko link fish && lnko status
+
+fonts:
+    # Refresh font cache and verify.
+    fc-cache --verbose --really-force && fc-list | rg "JetBrainsMono NFM"
+
+debug_terminal:
+    # Basic tests to debug terminal capabilities.
+    ./debug_terminal_glyphs
+    ./debug_terminal_truecolor
+
+man:
+    # Refresh mandb
+    mandb --create --user-db
+
+binaries:
+    # Setup other binaries.
+    ln --symbolic --force ~/.local/bin/fish ~/.local/bin/fish_indent
+    mkdir --parents ~/.terminfo/s
+    cp ~/.local/bin/.st-appdir/share/terminfo/s/st-256color ~/.terminfo/s/st-256color

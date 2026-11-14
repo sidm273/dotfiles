@@ -1,0 +1,11 @@
+set shell := ["fish", "-c"]
+
+cwd := "."
+
+default:
+    just --choose
+
+dl type="main":
+    # Download from the specified eget file.
+    echo "Downloading from {{ type }} environment"
+    set --export EGET_CONFIG {{ cwd }}/{{ type }}.toml && eget --download-all
