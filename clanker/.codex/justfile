@@ -1,0 +1,4 @@
+link:
+    # fuck codex.
+    ln --symbolic --force ../.config/clanker/.clanker.md AGENTS.md
+    ln --symbolic --force ../.config/clanker/skills/ skills
