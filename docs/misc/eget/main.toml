@@ -87,7 +87,7 @@ verify_sha256 = "f334047479241f7c8b48d091f4e814dcc798a51a74dfd04ee63cbf67e8c921b
 
 ["neovim/neovim-releases"]
 version = "v0.12.5"
-asset_filters = [".appimage", "^puc"]
+asset_filters = ["x86_64", ".appimage", "^puc"]
 verify_sha256 = "99da38db21d914c0ce8dfaba1cf037277849c1be7defe38fcd0d333849d69fa3"
 
 ["ouch-org/ouch"]
@@ -179,3 +179,8 @@ verify_sha256 = "c1ea30ce33070c1e021b65682020c1a02826f2e405b0359ccc53f9d8745aab2
 version = "0.13.8"
 asset_filters = ["musl"]
 verify_sha256 = "61fb26dabc4f0cf1d050fc6c67d40e43e4fae2994af21ebc1e050b233bf2b5ed"
+
+["j178/prek"]
+version = "0.5.10"
+asset_filters = ["musl", "x86_64", "linux", "tar.gz"]
+verify_sha256 = "c70a639cb98c90feafa213c23fb487644af73c906c5a6cee757403090f253c30"

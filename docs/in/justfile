@@ -1,0 +1,39 @@
+default:
+    just --choose
+
+alias c := clean
+alias t := test
+alias m := marimo
+
+# Launch marimo notebook
+marimo notebook="drafts.py":
+    uv run marimo --log-level info edit \
+        --headless --no-token --skip-update-check \
+        --no-sandbox {{ notebook }}
+
+qa:
+    # Run pre-commit hooks using prek.
+    uv run prek run
+
+testall python_version="3.14":
+    uv run --python={{ python_version }} pytest
+
+test python_version="3.14" *ARGS:
+    # Run all the tests, but allow for arguments to be passed
+    @echo "Running with arg: {{ ARGS }}"
+    uv run --python={{ python_version }} pytest {{ ARGS }}
+
+clean:
+    # Remove all build, test and Python artifacts
+    rm -fr build/
+    rm -fr dist/
+    rm -fr .eggs/
+    find . -name '*.egg-info' -exec rm -fr {} +
+    find . -name '*.egg' -exec rm -f {} +
+    find . -name '*.pyc' -exec rm -f {} +
+    find . -name '*.pyo' -exec rm -f {} +
+    find . -name '*~' -exec rm -f {} +
+    find . -name '__pycache__' -exec rm -fr {} +
+    find . -name '.rumdl_cache' -exec rm -fr {} +
+    find . -name '.ruff_cache' -exec rm -fr {} +
+    rm -fr .pytest_cache
