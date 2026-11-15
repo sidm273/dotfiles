@@ -1,0 +1,2 @@
+- Refer `justfile` for details.
+- `just qa` for QA tests.
