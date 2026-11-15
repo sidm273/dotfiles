@@ -31,20 +31,19 @@ compatibility: Requires just, either stow/lnko or similar program in user's `PAT
 ## Prerequisites
 
 - `just`, `lnko`/`stow` must be available in the user's `PATH`.
-- **ALWAYS** use `--dry-run` option for linking, and provide the user this
-  command to run it by themselves instructing them to remove the `--dry-run`
-  option.
+- If `lnko` is not available, `docs/misc/scripts/lnko_dl.sh` can be used for
+  setup.
+- Use `--dry-run` option initially and explain the output to the user. Once, the
+  command is marked correct and matches user's expectations, you can run the
+  actual command.
 
 ## Key locations
 
 This repo is structured to be used with a symlink farm manager.
 
 - Agent skills: `clanker/.config/clanker/skills/`.
-- Agent skills offline references:
-  `clanker/.config/clanker/skills/*/references/`.
 - `docs/misc/scripts`: One off scripts.
-- Personal project repositories: if `gh_repos` exists as a symlink, that is
-  where personal project repositories live.
+- Personal project repositories exist in `gh_repos` if it exists as a symlink.
 
 ## Setup
 
@@ -71,12 +70,7 @@ lnko status
 
 ### First time setup (Automated download)
 
-- Prerequisites: `gh` and `git` available in the user's `PATH`.
-- You need to configure a
-  [PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-  for your repository with the following settings.
-  - Set expiry to 30 days.
-  - Set RO access to only this repository contents.
+- Refer [Github Personal Access Token Setup](./references/github_pat_setup.md)
 
 ```bash
 # DEMO script only. Needs to be modified for specific use case.
@@ -127,11 +121,10 @@ it as a just recipe using the relevant skills.
 
 ### Post Setup
 
-- Certain packages require additional setup on newer machines, eg: build cache,
-  merge resources etc. Each package has its own header to indicate the package
-  to be linked before running the configuration commands and might require
-  re-linking.
-- See `docs/misc/justfile`
+- `docs/misc/justfile` contain additional post-setup recipes needed on newer
+  machines, eg: build cache, merge resources etc. Each package has its own
+  header to indicate the package to be linked before running the configuration
+  commands and might require re-linking.
 
 ## References
 

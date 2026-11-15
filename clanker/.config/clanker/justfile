@@ -9,6 +9,3 @@ add skill_name:
 update:
     # Install from lockfile.
     npx skills experimental_install --agent openclaw --copy --project
-
-clanker_init:
-    # TODO: Symlink the agent to relevant directory.
