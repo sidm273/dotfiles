@@ -36,6 +36,27 @@
       "computedHash": "ffad9a6c2962907608acfc6da776dff9c3fcd7c4290cd08c90e5cba895204ee1",
       "installMode": "copy"
     },
+    "dotfiles-helper": {
+      "source": "sidm273/dotfiles",
+      "sourceType": "github",
+      "skillPath": "clanker/.config/clanker/skills/dotfiles-helper/SKILL.md",
+      "computedHash": "faf6d47c882c58bccbc5c2715e7717dacf78da62f11f7ce6f0e81408361cec89",
+      "installMode": "copy"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "7bc223e2aafbdbf6e50ea243ba6ef67fe432bb069ab439fea0390795dac0bf7f",
+      "installMode": "copy"
+    },
+    "fish-scripting": {
+      "source": "sidm273/dotfiles",
+      "sourceType": "github",
+      "skillPath": "clanker/.config/clanker/skills/fish-scripting/SKILL.md",
+      "computedHash": "67a7c7dfb5f81f9d66dc252fff8a7a88c391cd990d6cf1e1e947253fa2f28ec5",
+      "installMode": "copy"
+    },
     "implement-paper": {
       "source": "marimo-team/skills",
       "sourceType": "github",
@@ -85,6 +106,13 @@
       "computedHash": "531cea9e3a3aab952c388033590412d09bc506745a6895efe7a31a6c37321188",
       "installMode": "copy"
     },
+    "nvim-scripting": {
+      "source": "sidm273/dotfiles",
+      "sourceType": "github",
+      "skillPath": "clanker/.config/clanker/skills/nvim-scripting/SKILL.md",
+      "computedHash": "233085af1eac11bec30b9b66443ffec2fe66c1a1cec861fcf8ec76d487367628",
+      "installMode": "copy"
+    },
     "polars": {
       "source": "polars-inc/skills",
       "sourceType": "github",
@@ -92,11 +120,32 @@
       "computedHash": "66ae1aea1877a30f56049fc9f9961f1bd80ef620b59b3c2220c7a285e62e9460",
       "installMode": "copy"
     },
+    "ponytail": {
+      "source": "sidm273/dotfiles",
+      "sourceType": "github",
+      "skillPath": "clanker/.config/clanker/skills/ponytail/SKILL.md",
+      "computedHash": "435123c0263529766cee38aa52f1a89fd3827d418ab0e93c354a64e384310150",
+      "installMode": "copy"
+    },
     "pydantic": {
       "source": "pydantic/skills",
       "sourceType": "github",
       "skillPath": "skills/pydantic/SKILL.md",
       "computedHash": "434540e43897b5ad8db567d7a77bd71ec0522e10134aaa23941050ca7ff7e1e7",
+      "installMode": "copy"
+    },
+    "pyparsing": {
+      "source": "sidm273/dotfiles",
+      "sourceType": "github",
+      "skillPath": "clanker/.config/clanker/skills/pyparsing/SKILL.md",
+      "computedHash": "f92455f8ee40ae6fe6253825f0886417064f59d7cf1bb83873a6db15f81ffc07",
+      "installMode": "copy"
+    },
+    "python-development": {
+      "source": "sidm273/dotfiles",
+      "sourceType": "github",
+      "skillPath": "clanker/.config/clanker/skills/python-development/SKILL.md",
+      "computedHash": "74cf1b0092f870c1f3592a2be5fe1b3ead2b9629e36d7e7a542a42a1e41ecd0d",
       "installMode": "copy"
     },
     "retro-marimo-pair": {
