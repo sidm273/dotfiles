@@ -3,8 +3,10 @@ set shell := ["fish", "-c"]
 # Uncomment the following to use a backup shell till you are setup with fish
 # set shell := ["bash", "-c"]
 
-pkgs := "bash bat brew clanker eza fish fzf git nvim python ripgrep scripts starship yazi"
-
+shell_pkgs := "bash fish"
+interactive := "bat brew eza nvim starship yazi"
+non_interactive := "clanker fzf git python ripgrep scripts"
+pkgs := join(" ", interactive, non_interactive, shell_pkgs)
 default:
     just --choose
 
