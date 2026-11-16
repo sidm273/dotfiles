@@ -14,4 +14,8 @@ provider add ollama \
 model add ollama/glm-5.3-flash
 model large ollama/gpt-oss:120b
 
+lsp add ty --command ty --args server --filetypes python
+lsp add ruff --command ruff --args server --filetypes python
+lsp add fish --command fish-lsp --args start --filetypes fish
+
 # vim: set ft=bash: syntax=bash:
