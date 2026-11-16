@@ -1,0 +1,22 @@
+################
+# Created/Changed using: Codex
+# TODO: HUMAN VERIFICATION PENDING :FIXME
+################
+[project]
+name = "command-builder-simple"
+version = "0.1.0"
+description = "Typed CLI models using pydantic-settings serialization."
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.13.4", "pydantic-settings>=2.15.0"]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = ["pytest>=9.0.3", "ruff", "ty"]
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]

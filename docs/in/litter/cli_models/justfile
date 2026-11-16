@@ -1,0 +1,16 @@
+################
+# Created/Changed using: Codex
+# TODO: HUMAN VERIFICATION PENDING :FIXME
+################
+set shell := ["fish", "-c"]
+
+default:
+    just --choose
+
+test:
+    uv run pytest
+
+lint:
+    uv run ruff format --check .
+    uv run ruff check .
+    uv run ty check .
