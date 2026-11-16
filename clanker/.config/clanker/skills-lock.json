@@ -57,6 +57,14 @@
       "computedHash": "67a7c7dfb5f81f9d66dc252fff8a7a88c391cd990d6cf1e1e947253fa2f28ec5",
       "installMode": "copy"
     },
+    "great-tables": {
+      "source": "https://posit-dev.github.io/great-tables/skill.md",
+      "sourceUrl": "https://posit-dev.github.io/great-tables/skill.md",
+      "sourceType": "download",
+      "skillPath": "SKILL.md",
+      "computedHash": "0e78dabd301c97dfe0125ba40ea80a545f7d94c03dc7a1003fb6063daf8a0a7e",
+      "installMode": "copy"
+    },
     "implement-paper": {
       "source": "marimo-team/skills",
       "sourceType": "github",
