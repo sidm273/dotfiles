@@ -7,7 +7,8 @@ set -o errexit -o nounset
 git clone https://github.com/sidm273/dotfiles "$HOME/dotfiles"
 sh "$HOME/dotfiles/docs/misc/scripts/lnko_dl.sh"
 
-cat >> ~/.bashrc << 'EOF'
+cat >> "$HOME~/.bashrc" << 'EOF'
+
 if [ -f ~/.bashrc.private ]; then
     . "$HOME/.bashrc.private"
 fi
@@ -18,4 +19,4 @@ EOF
 cd "$HOME/dotfiles"
 lnko link bash clanker git python scripts
 # Setup GH_TOKEN to reference Custom Github Proxy PAT.
-echo 'export GH_TOKEN="$ZID_GH_PROXY_PAT"' >> ~/.bashrc
+# echo 'export GH_TOKEN="$ZID_GH_PROXY_PAT"' >> ~/.bashrc
