@@ -7,7 +7,7 @@ set -o errexit -o nounset
 git clone https://github.com/sidm273/dotfiles "$HOME/dotfiles"
 sh "$HOME/dotfiles/docs/misc/scripts/lnko_dl.sh"
 
-cat >> "$HOME~/.bashrc" << 'EOF'
+cat >> "$HOME/.bashrc" << 'EOF'
 
 if [ -f ~/.bashrc.private ]; then
     . "$HOME/.bashrc.private"
