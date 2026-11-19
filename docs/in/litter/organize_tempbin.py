@@ -14,8 +14,8 @@
 """
 Sort downloaded binaries, man pages, and completions using ouch.
 
-Archives and loose documentation are removed after processing. Existing
-files are never overwritten. The ouch executable must be on PATH when
+Archive documentation is retained with package suffixes; loose documentation
+is retained as-is. Existing files are never overwritten. The ouch executable must be on PATH when
 archives are present.
 """
 
@@ -52,7 +52,7 @@ PLATFORM_SUFFIXES = tuple(
 
 def _is_documentation(path: Path) -> bool:
     """
-    Identify documentation that should not be installed.
+    Identify documentation files.
 
     Parameters
     ----------
@@ -107,7 +107,7 @@ def _category(path: Path) -> str | None:
         Destination category, or None for an unrecognized file.
     """
     if _is_documentation(path):
-        return None
+        return "docs"
     if path.name.endswith((".1", ".1.gz")):
         return "man"
     if path.suffix in {".bash", ".fish", ".zsh", ".nu", ".ps1", ".elv"}:
@@ -200,7 +200,7 @@ def _install(source: Path, destination: Path) -> None:
         shutil.move(source, destination)
 
 
-def _install_member(item: Path, root: Path) -> None:
+def _install_member(item: Path, root: Path, package: str) -> None:
     """
     Install a recognized archive member under its normalized name.
 
@@ -210,6 +210,8 @@ def _install_member(item: Path, root: Path) -> None:
         Extracted file to classify and install.
     root : Path
         Root containing the destination directories.
+    package : str
+        Package name derived from the archive filename.
     """
     category = _category(item)
     if category is None:
@@ -219,6 +221,8 @@ def _install_member(item: Path, root: Path) -> None:
         name = name.removesuffix(".gz")
     elif category == "bin":
         name = _binary_name(name)
+    elif category == "docs":
+        name = f"{item.stem}_{package}{item.suffix}"
     _install(item, root / category / name)
 
 
@@ -238,9 +242,15 @@ def _unpack(archive: Path, root: Path) -> None:
             ["ouch", "decompress", "--yes", "--dir", temporary, str(archive)],
             check=True,
         )
+        package = archive.name
+        for suffix in ARCHIVE_SUFFIXES:
+            if package.endswith(suffix):
+                package = package[: -len(suffix)]
+                break
+        package = _binary_name(package)
         for item in sorted(Path(temporary).rglob("*")):
             if item.is_file():
-                _install_member(item, root)
+                _install_member(item, root, package)
     archive.unlink()
 
 
@@ -260,7 +270,7 @@ def _unpack_archives(root: Path) -> None:
 
 def _organize_loose(root: Path) -> None:
     """
-    Remove loose documentation and install loose executables.
+    Retain loose documentation and install loose executables.
 
     Parameters
     ----------
@@ -268,9 +278,7 @@ def _organize_loose(root: Path) -> None:
         Download directory to organize.
     """
     for item in filter(Path.is_file, sorted(root.iterdir())):
-        if _is_documentation(item):
-            item.unlink()
-        elif _is_binary(item):
+        if not _is_documentation(item) and _is_binary(item):
             _install(item, root / "bin" / _binary_name(item.name))
 
 
@@ -280,7 +288,7 @@ def organize(
     directory: DirectoryPath = Path(__file__).parent / "tempbin",
 ) -> None:
     """
-    Organize downloads into bin, man, and completions directories.
+    Organize downloads into bin, man, completions, and docs directories.
 
     Parameters
     ----------
