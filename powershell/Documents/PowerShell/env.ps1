@@ -1,0 +1,16 @@
+$env:XDG_CONFIG_HOME = Join-Path $HOME '.config'
+$env:XDG_CACHE_HOME = Join-Path $HOME '.cache'
+$env:XDG_DATA_HOME = Join-Path $HOME '.local/share'
+$env:XDG_STATE_HOME = Join-Path $HOME '.local/state'
+$env:EDITOR = 'nvim'
+$env:ZID_DOT = Join-Path $HOME 'dotfiles'
+# Config patches needed to make XDG style dotfiles work in Windows 11.
+$env:RIPGREP_CONFIG_PATH = Join-Path $env:XDG_CONFIG_HOME 'ripgrep/.ripgreprc'
+$env:FZF_DEFAULT_OPTS_FILE = Join-Path $env:XDG_CONFIG_HOME 'fzf/.fzfrc'
+$env:STARSHIP_CONFIG = Join-Path $env:XDG_CONFIG_HOME 'starship.toml'
+$env:BAT_CONFIG_PATH = Join-Path $env:XDG_CONFIG_HOME 'bat/config'
+$env:EZA_CONFIG_DIR = Join-Path $env:XDG_CONFIG_HOME 'eza'
+$env:YAZI_CONFIG_HOME = Join-Path $env:XDG_CONFIG_HOME 'yazi'
+$env:PYTHONSTARTUP = Join-Path $env:XDG_CONFIG_HOME 'ptpython/pythonstartup.py'
+$env:GIT_CONFIG_GLOBAL = Join-Path $env:XDG_CONFIG_HOME 'git/config'
+$env:PATH = "$(Join-Path $HOME '.local/bin');$env:PATH"
