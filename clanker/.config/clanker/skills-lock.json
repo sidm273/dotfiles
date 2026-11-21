@@ -3,6 +3,7 @@
   "skills": {
     "add-molab-badge": {
       "source": "marimo-team/skills",
+      "commit": "d5783f16066d6b05576e8a8637466c11f2433734",
       "sourceType": "github",
       "skillPath": "skills/add-molab-badge/SKILL.md",
       "computedHash": "0954bf89f3bc900ea92ed56ffe24aa88e191e4814f6fa366953858e7ace22c13",
@@ -10,6 +11,7 @@
     },
     "anywidget-generator": {
       "source": "marimo-team/skills",
+      "commit": "d5783f16066d6b05576e8a8637466c11f2433734",
       "sourceType": "github",
       "skillPath": "skills/anywidget/SKILL.md",
       "computedHash": "b9336efade86f0fd809a2f1162e997926b4514dd80d3b82c644d6d9830141075",
@@ -17,6 +19,7 @@
     },
     "ast-grep": {
       "source": "ast-grep/agent-skill",
+      "commit": "0613dc7f82bbfb3b557380b54726b92f73358460",
       "sourceType": "github",
       "skillPath": "ast-grep/skills/ast-grep/SKILL.md",
       "computedHash": "66228b33a8e8327e2f3eeef8b7c9135bfd0e9ed11990529b0f1cef4d8fc7bf55",
@@ -24,20 +27,15 @@
     },
     "ast-grep-outline": {
       "source": "ast-grep/agent-skill",
+      "commit": "0613dc7f82bbfb3b557380b54726b92f73358460",
       "sourceType": "github",
       "skillPath": "ast-grep/skills/outline/SKILL.md",
       "computedHash": "240558dce6653c89adda273a3de85337fcd50e9408fb48880f85908b49ffbc32",
       "installMode": "copy"
     },
-    "auto-paper-demo": {
-      "source": "marimo-team/skills",
-      "sourceType": "github",
-      "skillPath": "skills/auto-paper-demo/SKILL.md",
-      "computedHash": "ffad9a6c2962907608acfc6da776dff9c3fcd7c4290cd08c90e5cba895204ee1",
-      "installMode": "copy"
-    },
     "dotfiles-helper": {
       "source": "sidm273/dotfiles",
+      "commit": "b1d93a385f6bc3d316a84fca63eba0bf873f1d50",
       "sourceType": "github",
       "skillPath": "clanker/.config/clanker/skills/dotfiles-helper/SKILL.md",
       "computedHash": "faf6d47c882c58bccbc5c2715e7717dacf78da62f11f7ce6f0e81408361cec89",
@@ -45,6 +43,7 @@
     },
     "find-skills": {
       "source": "vercel-labs/skills",
+      "commit": "57217cf86ba38148a57af9e90d14a4c049558330",
       "sourceType": "github",
       "skillPath": "skills/find-skills/SKILL.md",
       "computedHash": "7bc223e2aafbdbf6e50ea243ba6ef67fe432bb069ab439fea0390795dac0bf7f",
@@ -52,6 +51,7 @@
     },
     "fish-scripting": {
       "source": "sidm273/dotfiles",
+      "commit": "b1d93a385f6bc3d316a84fca63eba0bf873f1d50",
       "sourceType": "github",
       "skillPath": "clanker/.config/clanker/skills/fish-scripting/SKILL.md",
       "computedHash": "67a7c7dfb5f81f9d66dc252fff8a7a88c391cd990d6cf1e1e947253fa2f28ec5",
@@ -62,25 +62,12 @@
       "sourceUrl": "https://posit-dev.github.io/great-tables/skill.md",
       "sourceType": "download",
       "skillPath": "SKILL.md",
-      "computedHash": "0e78dabd301c97dfe0125ba40ea80a545f7d94c03dc7a1003fb6063daf8a0a7e",
-      "installMode": "copy"
-    },
-    "implement-paper": {
-      "source": "marimo-team/skills",
-      "sourceType": "github",
-      "skillPath": "skills/implement-paper/SKILL.md",
-      "computedHash": "158e999930fcc2cdb8a85b2827035fc819401f7de14068c0d277fb705144b3b7",
-      "installMode": "copy"
-    },
-    "implement-paper-auto": {
-      "source": "marimo-team/skills",
-      "sourceType": "github",
-      "skillPath": "skills/implement-paper-auto/SKILL.md",
-      "computedHash": "6c5617a44948d5c65d4ff2097580f8676bca32104d0647eabaa0f3080d54ed64",
+      "computedHash": "75d03234946388f4d88a7423d4b738204df653d9681ad13b354996ce0f9be895",
       "installMode": "copy"
     },
     "jupyter-to-marimo": {
       "source": "marimo-team/skills",
+      "commit": "d5783f16066d6b05576e8a8637466c11f2433734",
       "sourceType": "github",
       "skillPath": "skills/jupyter-to-marimo/SKILL.md",
       "computedHash": "73fc4a1de453b2afb343fcc514b16bd371d050ef5715406ee263a2290c8fd353",
@@ -88,6 +75,7 @@
     },
     "just": {
       "source": "casey/just",
+      "commit": "62784c2a6e169b8ca5f32bd69d5cfeb1d6b5e1fe",
       "sourceType": "github",
       "skillPath": "skills/just/SKILL.md",
       "computedHash": "4cf393427fec12f1811cf8ab29bd7ba4b6a376f6c1da1f6cbd68b04f03f395b6",
@@ -95,6 +83,7 @@
     },
     "marimo-batch": {
       "source": "marimo-team/skills",
+      "commit": "d5783f16066d6b05576e8a8637466c11f2433734",
       "sourceType": "github",
       "skillPath": "skills/marimo-batch/SKILL.md",
       "computedHash": "ed80afb5402acf387754961ea74b34760ecbb1e252082e7aa44057106bd58311",
@@ -102,6 +91,7 @@
     },
     "marimo-notebook": {
       "source": "marimo-team/skills",
+      "commit": "d5783f16066d6b05576e8a8637466c11f2433734",
       "sourceType": "github",
       "skillPath": "skills/marimo-notebook/SKILL.md",
       "computedHash": "98100c34dde8ed5f5400bd8183d2401d41877ed43ab7a7e4faa798511ca6f44d",
@@ -109,6 +99,7 @@
     },
     "marimo-pair": {
       "source": "marimo-team/marimo-pair",
+      "commit": "23ca56ab44791d9ace76fc1ee8ad59e34f8c8881",
       "sourceType": "github",
       "skillPath": "skills/marimo-pair/SKILL.md",
       "computedHash": "531cea9e3a3aab952c388033590412d09bc506745a6895efe7a31a6c37321188",
@@ -116,13 +107,15 @@
     },
     "nvim-scripting": {
       "source": "sidm273/dotfiles",
+      "commit": "b1d93a385f6bc3d316a84fca63eba0bf873f1d50",
       "sourceType": "github",
       "skillPath": "clanker/.config/clanker/skills/nvim-scripting/SKILL.md",
-      "computedHash": "233085af1eac11bec30b9b66443ffec2fe66c1a1cec861fcf8ec76d487367628",
+      "computedHash": "7adcdf763935fc9661f4b47c80902c94c850e31e5c743a9262fc893bfc8c3cac",
       "installMode": "copy"
     },
     "polars": {
       "source": "polars-inc/skills",
+      "commit": "b102cc948ba9a058f075e9794861ae5c56f31f6d",
       "sourceType": "github",
       "skillPath": "skills/polars/SKILL.md",
       "computedHash": "66ae1aea1877a30f56049fc9f9961f1bd80ef620b59b3c2220c7a285e62e9460",
@@ -130,6 +123,7 @@
     },
     "ponytail": {
       "source": "sidm273/dotfiles",
+      "commit": "b1d93a385f6bc3d316a84fca63eba0bf873f1d50",
       "sourceType": "github",
       "skillPath": "clanker/.config/clanker/skills/ponytail/SKILL.md",
       "computedHash": "435123c0263529766cee38aa52f1a89fd3827d418ab0e93c354a64e384310150",
@@ -137,6 +131,7 @@
     },
     "pydantic": {
       "source": "pydantic/skills",
+      "commit": "98f591c0886eb11df0bdd57804419e11439efc93",
       "sourceType": "github",
       "skillPath": "skills/pydantic/SKILL.md",
       "computedHash": "434540e43897b5ad8db567d7a77bd71ec0522e10134aaa23941050ca7ff7e1e7",
@@ -144,6 +139,7 @@
     },
     "pyparsing": {
       "source": "sidm273/dotfiles",
+      "commit": "b1d93a385f6bc3d316a84fca63eba0bf873f1d50",
       "sourceType": "github",
       "skillPath": "clanker/.config/clanker/skills/pyparsing/SKILL.md",
       "computedHash": "f92455f8ee40ae6fe6253825f0886417064f59d7cf1bb83873a6db15f81ffc07",
@@ -151,27 +147,23 @@
     },
     "python-development": {
       "source": "sidm273/dotfiles",
+      "commit": "b1d93a385f6bc3d316a84fca63eba0bf873f1d50",
       "sourceType": "github",
       "skillPath": "clanker/.config/clanker/skills/python-development/SKILL.md",
-      "computedHash": "74cf1b0092f870c1f3592a2be5fe1b3ead2b9629e36d7e7a542a42a1e41ecd0d",
+      "computedHash": "aeeaa1046d607776c892f4621d3c91dfc53a21da2f2da8489f3ebd21cd12dfd2",
       "installMode": "copy"
     },
     "retro-marimo-pair": {
       "source": "marimo-team/marimo-pair",
+      "commit": "23ca56ab44791d9ace76fc1ee8ad59e34f8c8881",
       "sourceType": "github",
       "skillPath": "skills/retro-marimo-pair/SKILL.md",
       "computedHash": "6a0613dd3c5065a037c1f5d63221969800824d61b37fa3e0181bbb56edc3cbc6",
       "installMode": "copy"
     },
-    "streamlit-to-marimo": {
-      "source": "marimo-team/skills",
-      "sourceType": "github",
-      "skillPath": "skills/streamlit-to-marimo/SKILL.md",
-      "computedHash": "841c046af56cf29110519ebe1b353f37740979b09286cc78e58efa814c890f72",
-      "installMode": "copy"
-    },
     "wasm-compatibility": {
       "source": "marimo-team/skills",
+      "commit": "d5783f16066d6b05576e8a8637466c11f2433734",
       "sourceType": "github",
       "skillPath": "skills/wasm-compatibility/SKILL.md",
       "computedHash": "cefcb81a1124aa1acd935d1268072526b8f0bb84ec21508472573f69ca80e1f0",
