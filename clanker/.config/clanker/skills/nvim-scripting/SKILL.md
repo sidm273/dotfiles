@@ -20,7 +20,7 @@ description: >
   before answering.
 - Before answering how a plugin's API/mechanism works (commands, autocmds,
   config options), read the actual installed source under
-  `~/.local/share/nvim/lazy/<plugin>/` (or its `doc/`) instead of answering from
+  `$XDG_DATA_HOME/nvim/lazy/<plugin>/` (or its `doc/`) instead of answering from
   training-data memory of the plugin. Plugin APIs change across versions and
   READMEs can lag the code.
 - If the user asks for a reference config or how to achieve something, check

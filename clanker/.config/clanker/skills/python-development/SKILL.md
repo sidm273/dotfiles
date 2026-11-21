@@ -45,7 +45,7 @@ In addition to top-level citation requirements
 
 The user will specify certain modes when interacting.
 
-- `snip`, `quick`: Indicates snippet mode.
+- `snip`, `quick`: Indicates snippet mode. (Default)
 - `pair`: Indicates pair programming mode.
 - `scripts`: User wants a standalone script with PEP723 inline metadata.
 
